@@ -298,7 +298,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-
+	CreateDrawToolBar();
 }
 //////////////////////////////////////////////  yousef ADEL _start ....
 void Output::DrawSq(Point Ctr, GfxInfo SqGfxInfo, bool selected) const
@@ -325,6 +325,8 @@ void Output::DrawSq(Point Ctr, GfxInfo SqGfxInfo, bool selected) const
 	P2.y = Ctr.y + length / 2;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+	CreateDrawToolBar();
+
 }
 
 
@@ -345,6 +347,7 @@ void Output::DrawTgl(Point P1, Point P2, Point P3, GfxInfo TglGfxInfo, bool sele
 	else
 		style = FRAME;
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+	CreateDrawToolBar();
 
 }
 
@@ -365,7 +368,7 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	else
 		style = FRAME;
 	int vertices = 6;
-	int length = 100;
+	int length = 200;
 	int* Px = new int[vertices];
 	int* Py = new int[vertices];
 	Px[0] = Ctr.x;
@@ -382,6 +385,8 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	Py[5] = Ctr.y - length / 2;
 
 	pWind->DrawPolygon(Px, Py, vertices, style);
+	CreateDrawToolBar();
+
 	delete[]Px;
 	delete[]Py;
 	Px = NULL;
@@ -407,6 +412,8 @@ void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) con
 	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));
 
 	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);
+	CreateDrawToolBar();
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
