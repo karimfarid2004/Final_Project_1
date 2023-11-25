@@ -1,6 +1,6 @@
 #include "Input.h"
 #include "Output.h"
-
+#define PI 3.14159
 
 Input::Input(window* pW) 
 {
@@ -10,37 +10,37 @@ void Input::GetPointClicked(int &x, int &y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
-void Input::CheckPointClicked(int a, Point & P ,Point * P2) const
+void Input::CheckPointClicked(int a, Point & P1 ,Point * P2) const
 {
 	switch (a)
 	{
 	case 0:
 	{
-		while (P.y < UI.ToolBarHeight)
+		while (P1.y < UI.ToolBarHeight)
 		{
-			GetPointClicked(P.x, P.y);
+			GetPointClicked(P1.x, P1.y);
 		}
 	}
 		break;
 	case 1:
 	{
-		while (P.y - 100 < UI.ToolBarHeight)
+		while (P1.y - length1/2 < UI.ToolBarHeight)
 		{
-			GetPointClicked(P.x, P.y);
+			GetPointClicked(P1.x, P1.y);
 		}
 	}
 		break;
 	case 2:
-		while (P.y - 200 / 2 < UI.ToolBarHeight)
+		while (P1.y  - length2 * cos((PI / 6)) < UI.ToolBarHeight)
 		{
-			GetPointClicked(P.x, P.y);
+			GetPointClicked(P1.x, P1.y);
 		}
 		break;
 	case 3:
 
-		while (P.y - UI.ToolBarHeight< sqrt(pow((P2->x - P.x), 2) + pow((P2->y - P.y), 2)))
+		while (P1.y - UI.ToolBarHeight< sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)))
 		{
-			GetPointClicked(P.x, P.y);
+			GetPointClicked(P2->x, P2->y);
 		}
 		break;
 	
