@@ -365,7 +365,7 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	else
 		style = FRAME;
 	int vertices = 6;
-	int length = 200;
+	int length = 500;
 	int* Px = new int[vertices];
 	int* Py = new int[vertices];
 	Px[0] = Ctr.x;
