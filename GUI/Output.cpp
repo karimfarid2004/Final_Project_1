@@ -317,12 +317,12 @@ void Output::DrawSq(Point Ctr, GfxInfo SqGfxInfo, bool selected) const
 	}
 	else
 		style = FRAME;
-	Point P1, P2;
 	int length = 200;
-	P1.x = Ctr.x - length / 2;
-	P1.y = Ctr.y - length / 2;
-	P2.x = Ctr.x + length / 2;
-	P2.y = Ctr.y + length / 2;
+	Point P1, P2;
+		P1.x = Ctr.x - length / 2;
+		P1.y = Ctr.y - length / 2;
+		P2.x = Ctr.x + length / 2;
+		P2.y = Ctr.y + length / 2;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 }

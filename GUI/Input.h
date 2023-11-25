@@ -14,6 +14,7 @@ private:
 public:
 	Input(window *pW);		//Consturctor
 	void GetPointClicked(int &x, int &y) const;//Get coordinate where user clicks
+	void CheckPointClicked(int a, Point & P, Point * P2 = nullptr) const;
 	string GetSrting(Output* pO) const ;	 //Returns a string entered by the user
 
 	ActionType GetUserAction() const; //Read the user click and map to an action

@@ -6,10 +6,46 @@ Input::Input(window* pW)
 {
 	pWind = pW; //point to the passed window
 }
-
 void Input::GetPointClicked(int &x, int &y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+}
+void Input::CheckPointClicked(int a, Point & P ,Point * P2) const
+{
+	switch (a)
+	{
+	case 0:
+	{
+		while (P.y < UI.ToolBarHeight)
+		{
+			GetPointClicked(P.x, P.y);
+		}
+	}
+		break;
+	case 1:
+	{
+		while (P.y - 100 < UI.ToolBarHeight)
+		{
+			GetPointClicked(P.x, P.y);
+		}
+	}
+		break;
+	case 2:
+		while (P.y - 200 / 2 < UI.ToolBarHeight)
+		{
+			GetPointClicked(P.x, P.y);
+		}
+		break;
+	case 3:
+
+		while (P.y - UI.ToolBarHeight< sqrt(pow((P2->x - P.x), 2) + pow((P2->y - P.y), 2)))
+		{
+			GetPointClicked(P.x, P.y);
+		}
+		break;
+	
+	}
+
 }
 
 string Input::GetSrting(Output *pO) const 

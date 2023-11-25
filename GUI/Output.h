@@ -6,6 +6,8 @@ class Output	//The application manager should have a pointer to this class
 {
 private:	
 	window* pWind;	//Pointer to the Graphics Window
+	Input* pin;
+	int a, b ;
 public:
 	int shapenum = 0;
 	int fillcolornum = 0;
