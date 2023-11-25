@@ -6,8 +6,7 @@
 int main()
 {
 	int x, y;
-	int color_num;
-	//Create Input and Output objects to test
+	int color_num; //Create Input and Output objects to test
 	Output* pOut = new Output();
 	Input* pIn = pOut->CreateInput();
 
@@ -377,11 +376,6 @@ int main()
 			break;
 		case PLAYSHAPE:
 			pOut->PrintMessage("You have selected play shape");
-			break;
-		case SWITCH:
-			pOut->ClearToolBar();
-			pOut->PrintMessage("Action: Switch to draw mode , creating Design tool bar");
-			pOut->CreateDrawToolBar();
 			break;
 		///TODO: Add more cases for the other action types//////////////////////////////////////KARIM
 		case TO_COLOR:

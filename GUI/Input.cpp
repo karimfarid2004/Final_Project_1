@@ -57,7 +57,7 @@ ActionType Input::GetUserAction() const
 			{
 			case ITM_SLCT: return SELECT;
 			case ITM_SHAPES: return TO_ShapesToolBar;
-			case ITM_PLYMOD: return TO_PLAY; /////////////////////////WAITING FOR SAMEH
+			case ITM_PLYMOD: return TO_PLAY;
 			case ITM_COLOR: return TO_COLOR;
 			case ITM_FILL: return TO_FILL;
 			case ITM_UNDO: return UNDO;
@@ -91,11 +91,7 @@ ActionType Input::GetUserAction() const
 		//and return the correspoding action
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
-			//Check whick Menu item was clicked
-			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
-			//Divide x coord of the point clicked by the menu item width (int division)
-			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 
 			switch (ClickedItemOrder) {
 
@@ -105,18 +101,17 @@ ActionType Input::GetUserAction() const
 			case ITM_TYP_BOTH:return PLAYBOTH;
 			case ITM_EXIT_PLAYMODE:return EXIT;
 
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			default: return EMPTY;
 			}
 		}
-		//[2] User clicks on the drawing area
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
 			return DRAWING_AREA;
 		}
-		//[3] User clicks on the status bar
+
 		return STATUS;
 	}
-	else if (UI.InterfaceMode == COLOR_SELECTION)
+	else if (UI.InterfaceMode == COLOR_SELECTION) //GUI is in Color Selection
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
@@ -131,19 +126,18 @@ ActionType Input::GetUserAction() const
 			case ITM_RED:return SELECT_RED;
 			case ITM_YELLOW:return SELECT_YELLOW;
 
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			default: return EMPTY;
 
 			}
 		}
-		//[2] User clicks on the drawing area
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
 			return DRAWING_AREA;
 		}
-		//[3] User clicks on the status bar
+
 		return STATUS;
 	}
-	else if (UI.InterfaceMode == FILL_COLOR_SELECTION)
+	else if (UI.InterfaceMode == FILL_COLOR_SELECTION) //GUI is in Fill Color Selection
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
@@ -161,50 +155,43 @@ ActionType Input::GetUserAction() const
 			case ITM_YELLOW:return SELECT_YELLOW_FILL;
 			case ITM_NO_FILL:return SELECT_NO_FILL;
 
-			default: return EMPTY;	//A click on empty place in desgin toolbar
-
+			default: return EMPTY;
 			}
 		}
-		//[2] User clicks on the drawing area
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
 			return DRAWING_AREA;
 		}
-		//[3] User clicks on the status bar
+
 		return STATUS;
 			
 	}
-	else if (UI.InterfaceMode == SHAPES_SELECTION) 
+	else if (UI.InterfaceMode == SHAPES_SELECTION) //GUI is in Shapes Selection
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = (x / UI.MenuItemWidth) + 1;
 
 			switch (ClickedItemOrder) {
-			 //////////WAITING FOR SAMEH
 			case ITM_RECT:return DRAW_RECT;
 			case ITM_CIRC:return DRAW_CIRCLE;
 			case ITM_TRI:return DRAW_TRIANGLE;
 			case ITM_HEX:return DRAW_HEXAGON;
 			case ITM_SQU:return DRAW_SQUARE;
 
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			default: return EMPTY;
 
 			}
 
 		}
-		//[2] User clicks on the drawing area
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
 			return DRAWING_AREA;
 		}
-		//[3] User clicks on the status bar
+
 		return STATUS;
 		
 	}
 }
-/////////////////////////////////
 	
-Input::~Input()
-{
-}
+Input::~Input(){}

@@ -9,11 +9,11 @@
 
 enum GUI_MODE	//Graphical user interface mode
 {
-	MODE_DRAW,	//Drawing mode (startup mode)
-	MODE_PLAY,	//Playing mode
-	COLOR_SELECTION,
-	FILL_COLOR_SELECTION,
-	SHAPES_SELECTION
+	MODE_DRAW,				//Drawing mode (startup mode)
+	MODE_PLAY,				//Playing mode
+	COLOR_SELECTION,		//Color toolbar
+	FILL_COLOR_SELECTION,	//Fillers toolbar
+	SHAPES_SELECTION		//Shapes toolbar
 };
 
 enum DrawMenuItem //The items of the Draw menu (you should add more items)
@@ -56,34 +56,34 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 };
 enum ShapesItems
 {
-	ITM_SHAPE,
-	ITM_RECT,		//Recangle item in menu
-	ITM_CIRC,
-	ITM_TRI,
-	ITM_HEX,
-	ITM_SQU,
+	ITM_SHAPE,		//Blank item in draw mode
+	ITM_RECT,		//Recangle item in toolbar
+	ITM_CIRC,		//Cirlce item in toolbar
+	ITM_TRI,		//Triangle item in toolbar
+	ITM_HEX,		//Hexagon item in toolbar
+	ITM_SQU,		//Square item in toolbar
 	SHAPES_ITM_COUNT
 };
 enum ColorItems
 {
-	ITM_NONE,
-	ITM_BLACK,
-	ITM_BLUE,
-	ITM_GREEN,
-	ITM_ORANGE,
-	ITM_RED,
-	ITM_YELLOW,
+	ITM_NONE,		//Blank item in draw mode
+	ITM_BLACK,		//Black color in toolbar
+	ITM_BLUE,		//Blue color in toolbar
+	ITM_GREEN,		//Green color in toolbar
+	ITM_ORANGE,		//Orange color in toolbar
+	ITM_RED,		//Red color in toolbar
+	ITM_YELLOW,		//Yellow color in toolbar
 	COLOR_ITM_COUNT,
 };
 enum FillColorItems
 {
-	ITM_NO_FILL,
-	ITM_BLACK_FILL,
-	ITM_BLUE_FILL,
-	ITM_GREEN_FILL,
-	ITM_ORANGE_FILL,
-	ITM_RED_FILL,
-	ITM_YELLOW_FILL,
+	ITM_NO_FILL,		//Blank item in draw mode and no fill in toolbar
+	ITM_BLACK_FILL,		//Black fill color in toolbar
+	ITM_BLUE_FILL,		//Blue fill color in toolbar
+	ITM_GREEN_FILL,		//Green fill color in toolbar
+	ITM_ORANGE_FILL,	//Orange fill color in toolbar
+	ITM_RED_FILL,		//Red fill color in toolbar
+	ITM_YELLOW_FILL,	//Yellow fill color in toolbar
 	FILL_COLOR_ITM_COUNT
 };
 
