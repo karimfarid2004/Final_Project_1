@@ -1,5 +1,7 @@
 #include "Output.h"
+#include <cmath>
 
+#define PI 3.14159
 
 Output::Output()
 {
@@ -365,27 +367,22 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	else
 		style = FRAME;
 	int vertices = 6;
-	int length = 500;
+	int length = 100;
 	int* Px = new int[vertices];
 	int* Py = new int[vertices];
-	Px[0] = Ctr.x;
-	Py[0] = Ctr.y - length;
-	Px[1] = Ctr.x + (sqrt(3.0) * length) / 2;
-	Py[1] = Ctr.y - length / 2;
-	Px[2] = Ctr.x + (sqrt(3.0) * length) / 2;
-	Py[2] = Ctr.y + length / 2;
-	Px[3] = Ctr.x;
-	Py[3] = Ctr.y + length;
-	Px[4] = Ctr.x - (sqrt(3.0) * length) / 2;
-	Py[4] = Ctr.y + length / 2;
-	Px[5] = Ctr.x - (sqrt(3.0) * length) / 2;
-	Py[5] = Ctr.y - length / 2;
+
+
+	for (int i = 0; i < vertices; i++)
+	{
+		Px[i] = Ctr.x + length * cos((2 * i + 1) * (PI / 6));
+		Py[i] = Ctr.y + length * sin((2 * i + 1) * (PI / 6));
+	}
 
 	pWind->DrawPolygon(Px, Py, vertices, style);
 	delete[]Px;
 	delete[]Py;
 	Px = NULL;
-	Py = NULL;
+	Py = NULL;      // Good practise to set the pointer to NULL
 }
 
 void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) const
