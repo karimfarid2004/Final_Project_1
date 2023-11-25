@@ -9,10 +9,10 @@
 
 enum GUI_MODE	//Graphical user interface mode
 {
-	MODE_DRAW,				//Drawing mode (startup mode)
-	MODE_PLAY,				//Playing mode
+	MODE_DRAW,			//Drawing mode (startup mode)
+	MODE_PLAY,			//Playing mode
 	COLOR_SELECTION,		//Color toolbar
-	FILL_COLOR_SELECTION,	//Fillers toolbar
+	FILL_COLOR_SELECTION,		//Fillers toolbar
 	SHAPES_SELECTION		//Shapes toolbar
 };
 
