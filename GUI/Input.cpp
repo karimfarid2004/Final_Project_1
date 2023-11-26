@@ -30,10 +30,17 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 
 	case ITM_CIRC:		//Circle validity
 	{
+		while (P1.y < UI.ToolBarHeight)
+		{
+			statusPo->ClearStatusBar();
+			statusPo->PrintMessage("Failed to put the Center of the Circle, you are trying to draw on the ddd, Please Click another point.");
+			GetPointClicked(P1.x, P1.y);
+			
+		}
 		while (P1.y - sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)) <UI.ToolBarHeight)
 		{
 			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar, Please Click another point.");
+			statusPo->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar1111, Please Click another point.");
 			GetPointClicked(P2->x, P2->y);
 		}
 		break;
@@ -82,6 +89,7 @@ string Input::GetSrting(Output *pO) const
 	string entered = "You Entered ";
 	while(1)
 	{
+
 		pWind->WaitKeyPress(Key);
 		if(Key == 27 )			//ESCAPE key is pressed
 			return "";			//returns nothing as user has cancelled label

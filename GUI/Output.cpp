@@ -80,6 +80,7 @@ void Output::CreateDrawToolBar() const
 	//First prepare List of images for each menu item
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
+	
 	string MenuItemImages[DRAW_ITM_COUNT];
 	MenuItemImages[ITM_SLCT] = "images\\MenuItems\\select.jpg";
 	MenuItemImages[ITM_SHAPES] = "images\\MenuItems\\shapes.jpg";
@@ -103,14 +104,14 @@ void Output::CreateDrawToolBar() const
 	for(int i=0; i<DRAW_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
-
 	
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
-	CreateShapesToolBarTAB();
-	CreateColorsToolBarTAB();
-	CreateFillColorsToolBarTAB();
+	
+	CreateShapesToolBarTAB();		// Displays the selected shape on the toolbar
+	CreateColorsToolBarTAB();		// Displays the selected color on the toolbar
+	CreateFillColorsToolBarTAB();   // Displays the selected filling color on the toolbar
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -119,7 +120,7 @@ void Output::CreatePlayToolBar() const
 	ClearToolBar();
 	UI.InterfaceMode = MODE_PLAY;
 
-	//pWind->DrawImage("images\\MenuItems\\background.jpg",UI.width,0,UI.ToolBarHeight,UI.width );
+	
 	///TODO: write code to create Play mode menu
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_TYP_COLOR] ="images\\MenuItems\\Color_Wheel.jpg";
@@ -153,6 +154,7 @@ void Output::CreateShapesToolBar() const
 
 	for (int i = 1; i < SHAPES_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], (i-1) * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
 
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
@@ -247,7 +249,7 @@ void Output::CreateFillColorsToolBarTAB() const
 	MenuItemImages[ITM_YELLOW_FILL] = "images\\ColorItems\\Fill_Color_Yellow.jpg";
 	MenuItemImages[ITM_NO_FILL] = "images\\ColorItems\\Fill_Color_No_Fill.jpg";
 
-		pWind->DrawImage(MenuItemImages[fillcolornum], 3 * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+	pWind->DrawImage(MenuItemImages[fillcolornum], 3 * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
@@ -300,7 +302,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 
 }
-//////////////////////////////////////////////  yousef ADEL _start ....
+
 void Output::DrawSq(Point Ctr, GfxInfo SqGfxInfo, bool selected) const
 {
 	color DrawingClr;
@@ -399,6 +401,7 @@ void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) con
 	else
 		style = FRAME;
 	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));
+	pWind->DrawCircle(Ctr.x, Ctr.y, 1, style);
 	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);
 }
 
