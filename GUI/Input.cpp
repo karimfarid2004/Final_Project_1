@@ -15,6 +15,10 @@ void Input::QuesPointClicked()
 {
 	pWind->FlushMouseQueue();
 }
+void Input::QuesKeyClicked()
+{
+	pWind->FlushKeyQueue();
+}
 void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point * P2) const
 {
 	//writing on statusBar for validity check
@@ -91,7 +95,7 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 
 }
 
-string Input::GetSrting(Output *pO,bool&msgent) const 
+string Input::GetSrting(Output *pO) const 
 {
 	string Label;
 	char Key;
@@ -103,7 +107,6 @@ string Input::GetSrting(Output *pO,bool&msgent) const
 			return "";			//returns nothing as user has cancelled label
 		if(Key == 13 )			//ENTER key is pressed
 		{
-			msgent = false;
 			return Label;
 		}
 		if((Key == 8) && (Label.size() >= 1))	//BackSpace is pressed
