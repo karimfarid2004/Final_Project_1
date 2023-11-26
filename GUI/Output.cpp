@@ -303,108 +303,125 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 }
 
-void Output::DrawSq(Point Ctr, GfxInfo SqGfxInfo, bool selected) const
+
+void Output::DrawSq(Point Ctr, GfxInfo SqGfxInfo, bool selected) const              //====================================//
+                                                                                   //		Square Drawing Function  	 //
+                                                                                  //====================================//
 {
-	color DrawingClr;
+	color DrawingClr;                   // To determinate either the Square will be drawn Highlighted or Not
 	if (selected)
-		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+		DrawingClr = UI.HighlightColor; //Square should be drawn highlighted
 	else
-		DrawingClr = SqGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, 1);
-	drawstyle style;
+		DrawingClr = SqGfxInfo.DrawClr;   // Square should be drawn with a certain color ( Not Highlighted)
+	pWind->SetPen(DrawingClr, 1);        // Set the Pen Color by a certain color  (Highlighted or Not) and its Size
+	drawstyle style;                     // To determinate either the Square will be drawn Fiiled or Framed
 	if (SqGfxInfo.isFilled)
 	{
-		style = FILLED;
-		pWind->SetBrush(SqGfxInfo.FillClr);  //Figure should be drawn filled
+		style = FILLED;                      //Square should be drawn filled
+		pWind->SetBrush(SqGfxInfo.FillClr);  //Set the brush Color by a certain color (FillClr) if square is filled
 	}
 	else
-		style = FRAME;
+		style = FRAME;                   // Square should be drawn Framed (Not Filled)
 	int length = 200;
 	Point P1, P2;
 		P1.x = Ctr.x - length / 2;
-		P1.y = Ctr.y - length / 2;
+		P1.y = Ctr.y - length / 2;        // set the X coordinates and Y coordinates of the two points of square 
 		P2.x = Ctr.x + length / 2;
 		P2.y = Ctr.y + length / 2;
 
-	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);  /*Call the included function DrawRectangle in CMUgraphicsLib to draw the Square
+		                                                  by sending(X coordinate of First point, Y coordinate of First point,
+														  X coordinate of Second point, Y coordinate of Second point,The style of drawing(Filled or Framed))*/
+		                                                      									
 }
 
 
-void Output::DrawTgl(Point P1, Point P2, Point P3, GfxInfo TglGfxInfo, bool selected) const
+void Output::DrawTgl(Point P1, Point P2, Point P3, GfxInfo TglGfxInfo, bool selected) const       //====================================//
+                                                                                                 //		Triangle Drawing Function  	   //
+                                                                                                //====================================//
 {
-	color DrawingClr;
+	color DrawingClr;                     // To determinate either the Triangle will be drawn Highlighted or Not
 	if (selected)
-		DrawingClr = UI.HighlightColor;  //Figure should be drawn highlighted
+		DrawingClr = UI.HighlightColor;  //Triangle should be drawn highlighted
 	else
-		DrawingClr = TglGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, 1);
-	drawstyle style;
+		DrawingClr = TglGfxInfo.DrawClr; // Triangle should be drawn with a certain color ( Not Highlighted)
+	pWind->SetPen(DrawingClr, 1);         // Set the Pen Color by a certain color (Highlighted or Not)  and its Size
+	drawstyle style;              // To determinate either the Triangle will be drawn Fiiled or Framed
 	if (TglGfxInfo.isFilled)
 	{
-		style = FILLED;
-		pWind->SetBrush(TglGfxInfo.FillClr);  //Figure should be drawn filled
+		style = FILLED;                       //Triangle should be drawn filled
+		pWind->SetBrush(TglGfxInfo.FillClr);  //Set the brush Color by a certain color (FillClr) if Triangle is filled
 	}
 	else
-		style = FRAME;
-	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+		style = FRAME;        // Triangle should be drawn Framed (Not Filled)
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);          /* Call the included function DrawTriangle in CMUgraphicsLib to draw the Triangle
+	                                                                          by sending(X coordinate of First point ,Y coordinate of First point,X coordinate of Second point ,Y coordinate of Second point
+																			    X coordinate of Third point ,Y coordinate of Third point,The style of drawing(Filled or Framed)) */
 
 }
 
-void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
+void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const           //====================================//
+                                                                                  //		Hexagon Drawing Function    //
+                                                                                 //====================================//
 {
-	color DrawingClr;
+	color DrawingClr;                    // To determinate either the Hexagon will be drawn Highlighted or Not
 	if (selected)
-		DrawingClr = UI.HighlightColor;  //Figure should be drawn highlighted
+		DrawingClr = UI.HighlightColor;  //Hexagon should be drawn highlighted
 	else
-		DrawingClr = HexGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, 1);
-	drawstyle style;
+		DrawingClr = HexGfxInfo.DrawClr;       // Hexagon should be drawn with a certain color ( Not Highlighted)
+	pWind->SetPen(DrawingClr, 1);          // Set the Pen Color by a certain color (Highlighted or Not) and its Size
+	drawstyle style;                      // To determinate either the Hexagon will be drawn Fiiled or Framed
 	if (HexGfxInfo.isFilled)
 	{
-		style = FILLED;
-		pWind->SetBrush(HexGfxInfo.FillClr);  //Figure should be drawn filled
+		style = FILLED;                       //Hexagon should be drawn filled
+		pWind->SetBrush(HexGfxInfo.FillClr);  //Set the brush Color by a certain color (FillClr) if Hexagon is filled
 	}
 	else
-		style = FRAME;
-	int vertices = 6;
-	int length = 100;
-	int* Px = new int[vertices];
-	int* Py = new int[vertices];
+		style = FRAME;                // Hexagon should be drawn Framed (Not Filled)
+	int vertices = 6;                // Number of vertices in Hexagon
+	int length = 100;               // Length of Hexagon
+	int* Px = new int[vertices];   // Array of X coordinate of Hexagon points
+	int* Py = new int[vertices];   // Array of Y coordinate of Hexagon points
 
 	for (int i = 0; i < vertices; i++)
 	{
-		Px[i] = Ctr.x + length * cos((i) * (PI / 3));
-		Py[i] = Ctr.y + length * sin((i) * (PI / 3));
+		Px[i] = Ctr.x + length * cos((i) * (PI / 3));  //Set the value of Array of X coordinate of Hexagon points ....NOTE: The angle between two consecutive points is PI / 3
+		Py[i] = Ctr.y - length * sin((i) * (PI / 3));  //Set the value of Array of Y coordinate of Hexagon points ....NOTE: The angle between two consecutive points is PI / 3
 	}
 
-	pWind->DrawPolygon(Px, Py, vertices, style);
-	delete[]Px;
+	pWind->DrawPolygon(Px, Py, vertices, style);           /* Call the included function DrawPolygon in CMUgraphicsLib to draw the Hexagon
+	                                                       by sending(Array of x coordinate, Array of y coordinate, Number of vertices, The style of drawing(Filled or Framed)) */
+	delete[]Px;       // Deallocate memory location       
 	delete[]Py;
-	Px = NULL;
-	Py = NULL;      // Good practice to set the pointer to NULL
-}
+	Px = NULL;       // Good practise to set the pointer to NULL
+	Py = NULL;
 
-void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) const
-{
-	color DrawingClr;
+}
+void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) const           //====================================//
+                                                                                            //		Circle Drawing Function       //
+                                                                                           //====================================//
+{ 
+	color DrawingClr;                    // To determinate either the Circle will be drawn Highlighted or Not
 	if (selected)
-		DrawingClr = UI.HighlightColor;  //Figure should be drawn highlighted
+		DrawingClr = UI.HighlightColor;  // Circle  should be drawn highlighted
 	else
-		DrawingClr = CirGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, 1);
-	drawstyle style;
+		DrawingClr = CirGfxInfo.DrawClr;  // Circle should be drawn with a certain color ( Not Highlighted)
+	pWind->SetPen(DrawingClr, 1);         // Set the Pen color by a certain color  (Highlighted or Not) and its Size
+	drawstyle style;                      // To determinate either the Circle will be drawn Fiiled or Framed
 	if (CirGfxInfo.isFilled)
 	{
-		style = FILLED;
-		pWind->SetBrush(CirGfxInfo.FillClr);  //Figure should be drawn filled
+		style = FILLED;                        // Circle should be drawn filled
+		pWind->SetBrush(CirGfxInfo.FillClr);  //Set the brush Color by a certain color (FillClr) if Circle is filled 
 	}
 	else
-		style = FRAME;
-	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));
-	pWind->DrawCircle(Ctr.x, Ctr.y, 1, style);
-	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);
-}
+		style = FRAME;                         // Circle should be drawn Framed (Not Filled)
+	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));  // Calculate the radius of the Circle
+	pWind->DrawCircle(Ctr.x, Ctr.y, 1, style);          // determinate the centre point
 
+	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);      /*Call the included function DrawCircle in CMUgraphicsLib to draw the Circle
+														   by sending (X coordinate of centre point ,Y coordinate of centre point,Radius of the Circle,The style of drawing(Filled or Framed))*/
+
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {
