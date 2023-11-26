@@ -23,7 +23,8 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 		{
 			statusPo->ClearStatusBar();
 			statusPo->PrintMessage("Failed to Draw a Rectangle, you are trying to draw on the toolbar, Please Click another point.");
-			GetPointClicked(P1.x, P1.y);		
+			GetPointClicked(P1.x, P1.y);
+			statusPo->ClearStatusBar();
 		}
 		break;
 	}
@@ -33,15 +34,16 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 		while (P1.y < UI.ToolBarHeight)
 		{
 			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to put the Center of the Circle, you are trying to draw on the ddd, Please Click another point.");
+			statusPo->PrintMessage("Failed to put the Center of the Circle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
-			
+			statusPo->ClearStatusBar();
 		}
 		while (P1.y - sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)) <UI.ToolBarHeight)
 		{
 			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar1111, Please Click another point.");
+			statusPo->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P2->x, P2->y);
+			statusPo->ClearStatusBar();
 		}
 		break;
 	}
@@ -53,6 +55,7 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 			statusPo->ClearStatusBar();
 			statusPo->PrintMessage("Failed to Draw a Triangle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
+			statusPo->ClearStatusBar();
 		}
 	break;
 	}
@@ -64,6 +67,7 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 			statusPo->ClearStatusBar();
 			statusPo->PrintMessage("Failed to Draw a Hexagon, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
+			statusPo->ClearStatusBar();
 		}
 		break;
 	}
@@ -75,6 +79,7 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 			statusPo->ClearStatusBar();
 			statusPo->PrintMessage("Failed to Draw a Square, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
+			statusPo->ClearStatusBar();
 		}
 		break;
 	}
