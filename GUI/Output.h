@@ -6,8 +6,7 @@ class Output	//The application manager should have a pointer to this class
 {
 private:	
 	window* pWind;	//Pointer to the Graphics Window
-	Input* pin;		//?????????
-	int a, b ;		//?????????
+	
 public:
 	int shapenum = 0;
 	int fillcolornum = 0;
@@ -21,9 +20,9 @@ public:
 	void CreateShapesToolBar() const;				//creates Shapes toolbar
 	void CreateColorsToolBar() const;				//creates Colors toolbar
 	void CreateFillColorsToolBar() const;			//creates Fill Colors toolbar
-	void CreateFillColorsToolBarTAB()const;			//creates a changable icon for fill colors in draw mode toolbar
-	void CreateColorsToolBarTAB() const;			//creates a changable icom for colors in draw mode toolbar
-	void CreateShapesToolBarTAB() const;			//creates a changable icon for shapes in draw mode toolbar
+	void CreateFillColorsToolBarTAB()const;			//creates a changeable icon for fill colors in draw mode toolbar
+	void CreateColorsToolBarTAB() const;			//creates a changeable icon for colors in draw mode toolbar
+	void CreateShapesToolBarTAB() const;			//creates a changeable icon for shapes in draw mode toolbar
 
 	// create getters and setters for the length "hexagon and square"
 
@@ -33,8 +32,7 @@ public:
 	void ClearToolBar() const;		//Clears current toolbar
 	
 	// -- Figures Drawing functions
-		// -- Figures Drawing functions
-	//////////////////////////////////////////////  yousef ADEL _start ....
+
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
 
 	void DrawSq(Point P1, GfxInfo SqGfxInfo, bool selected = false) const;	//Draw a square
@@ -45,9 +43,6 @@ public:
 
 	void DrawCir(Point P1, Point P2, GfxInfo CirGfxInfo, bool selected = false) const; //Draw a circle
 
-	//////////////////////////////////////////////  yousef ADEL _end
-
-	/////Make similar functions for drawing all other figure types.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 

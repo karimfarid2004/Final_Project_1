@@ -39,7 +39,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	SELECT_ORANGE,		//Selecting the color orange
 	SELECT_RED,			//Selecting the color red
 	SELECT_YELLOW,		//Selecting the color yellow
-	SELECT_BLACK_FILL,	//Selecting the fiil color black
+	SELECT_BLACK_FILL,	//Selecting the fill color black
 	SELECT_BLUE_FILL,	//Selecting the fill color blue
 	SELECT_GREEN_FILL,	//Selecting the fill color green
 	SELECT_ORANGE_FILL,	//Selecting the fill color orange

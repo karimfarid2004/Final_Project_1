@@ -57,8 +57,8 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 enum ShapesItems
 {
 	ITM_SHAPE,		//Blank item in draw mode
-	ITM_RECT,		//Recangle item in toolbar
-	ITM_CIRC,		//Cirlce item in toolbar
+	ITM_RECT,		//Rectangle item in toolbar
+	ITM_CIRC,		//Circle item in toolbar
 	ITM_TRI,		//Triangle item in toolbar
 	ITM_HEX,		//Hexagon item in toolbar
 	ITM_SQU,		//Square item in toolbar
@@ -110,7 +110,6 @@ struct UI_Info	//User Interface Info.
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
 
-	/// Add more members if needed
 	
 }UI;	//create a global object UI
 

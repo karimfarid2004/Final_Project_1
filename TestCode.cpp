@@ -19,7 +19,7 @@ int main()
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 1:	
 	//			Create The FULL Tool bar, the drawing area and the status bar	
-	//			This has already been done through the constrcutor of class Output
+	//			This has already been done through the constructor of class Output
 	///////////////////////////////////////////////////////////////////////////////////
 
 	pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
@@ -43,188 +43,187 @@ int main()
 
 	/// 2.1- Rectangle Test ///
 	/// ===================  
-	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	//pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
 
-	// 2.1.1 - Drawing non-filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
-	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
+	//// 2.1.1 - Drawing non-filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->CheckPointClicked(ITM_RECT, pOut, P1);
+	//pIn->GetPointClicked(P2.x, P2.y);
+	//pIn->CheckPointClicked(ITM_RECT, pOut, P2);
 
-	gfxInfo.BorderWdth = 5;
-	gfxInfo.DrawClr = BLACK;	//any color for border
-	gfxInfo.isFilled = false;	//Figure is NOT filled
-	pOut->DrawRect(P1, P2, gfxInfo, false);
+	//gfxInfo.BorderWdth = 5;
+	//gfxInfo.DrawClr = BLACK;	//any color for border
+	//gfxInfo.isFilled = false;	//Figure is NOT filled
+	//pOut->DrawRect(P1, P2, gfxInfo, false);
 
-	// 2.1.2 - Drawing highlighted non-filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->DrawRect(P1, P2, gfxInfo, true);
-
-
-	// 2.1.3 - Drawing a filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
-	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
-
-	gfxInfo.BorderWdth = 6;
-	gfxInfo.DrawClr = BLUE;	//any color for border
-	gfxInfo.FillClr = GREEN;//any color for filling
-	gfxInfo.isFilled = true;//Figure is filled
-	pOut->DrawRect(P1, P2, gfxInfo, false);
+	//// 2.1.2 - Drawing highlighted non-filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+	//pOut->DrawRect(P1, P2, gfxInfo, true);
 
 
-	// 2.1.4 - Drawing a highlighted filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->DrawRect(P1, P2, gfxInfo, true);
+	//// 2.1.3 - Drawing a filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->CheckPointClicked(ITM_RECT, pOut, P1);
+	//pIn->GetPointClicked(P2.x, P2.y);
+	//pIn->CheckPointClicked(ITM_RECT, pOut, P2);
+
+	//gfxInfo.BorderWdth = 6;
+	//gfxInfo.DrawClr = BLUE;	//any color for border
+	//gfxInfo.FillClr = GREEN;//any color for filling
+	//gfxInfo.isFilled = true;//Figure is filled
+	//pOut->DrawRect(P1, P2, gfxInfo, false);
 
 
-
-	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->ClearDrawArea();
-
-	//////////////////////////////////////////////  yousef ADEL _start ....
-	/// 2.2- Square Test ///
-	/// ============== 
-	pOut->PrintMessage("Drawing a Square, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-
-	// 2.2.1 - Drawing non-filled square
-	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click one point");
-	pIn->GetPointClicked(P1.x,P1.y);
-	pIn->CheckPointClicked(ITM_SQU, pOut, P1);
-	gfxInfo.BorderWdth = 5;
-	gfxInfo.DrawClr = BLACK;
-	gfxInfo.isFilled = false; //Figure is NOT filled
-	pOut->DrawSq(P1, gfxInfo, false);
-
-	// 2.2.2 - Drawing highlighted non-filled square
-	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");
-	pIn->GetPointClicked(x, y); //Wait for any click
-	pOut->DrawSq(P1, gfxInfo, true);
-
-
-	// 2.2.3 - Drawing a filled square
-	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(ITM_SQU, pOut, P1);
-	gfxInfo.BorderWdth = 6;
-	gfxInfo.DrawClr = BLUE;
-	gfxInfo.FillClr = GREEN;
-	gfxInfo.isFilled = true; //Figure is filled
-	pOut->DrawSq(P1, gfxInfo, false);
-
-
-	// 2.2.4 - Drawing a highlighted filled square
-	pOut->PrintMessage("Drawing a Square ==> Highlighted filled, Click to Highlight");
-	pIn->GetPointClicked(x, y); //Wait for any click
-	pOut->DrawSq(P1, gfxInfo, true);
+	//// 2.1.4 - Drawing a highlighted filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+	//pOut->DrawRect(P1, P2, gfxInfo, true);
 
 
 
-	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->ClearDrawArea();
+	//pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+	//pOut->ClearDrawArea();
 
-	/// 2.3- Triangle Test ///
-	/// =================== 
-	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	///// 2.2- Square Test ///
+	///// ============== 
+	//pOut->PrintMessage("Drawing a Square, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
 
-	// 2.3.1 - Drawing non-filled triangle
-	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click three points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
-	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
-	pIn->GetPointClicked(P3.x, P3.y);
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
+	//// 2.2.1 - Drawing non-filled square
+	//pOut->PrintMessage("Drawing a Square ==> non-filled,  Click one point");
+	//pIn->GetPointClicked(P1.x,P1.y);
+	//pIn->CheckPointClicked(ITM_SQU, pOut, P1);
+	//gfxInfo.BorderWdth = 5;
+	//gfxInfo.DrawClr = BLACK;
+	//gfxInfo.isFilled = false; //Figure is NOT filled
+	//pOut->DrawSq(P1, gfxInfo, false);
 
-	gfxInfo.BorderWdth = 5;
-	gfxInfo.DrawClr = BLACK;
-	gfxInfo.isFilled = false; //Figure is NOT filled
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, false);
-
-	// 2.3.2 - Drawing highlighted non-filled triangle
-	pOut->PrintMessage("Drawing a Triangle ==> Highlighted non-filled, Click to Highlight");
-	pIn->GetPointClicked(x, y); //Wait for any click
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, true);
+	//// 2.2.2 - Drawing highlighted non-filled square
+	//pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y); //Wait for any click
+	//pOut->DrawSq(P1, gfxInfo, true);
 
 
-	// 2.3.3 - Drawing a filled triangle
-	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click three points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
-	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
-	pIn->GetPointClicked(P3.x, P3.y);
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
-
-	gfxInfo.BorderWdth = 6;
-	gfxInfo.DrawClr = BLUE;
-	gfxInfo.FillClr = GREEN; //Figure is filled
-	gfxInfo.isFilled = true;
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, false);
+	//// 2.2.3 - Drawing a filled square
+	//pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->CheckPointClicked(ITM_SQU, pOut, P1);
+	//gfxInfo.BorderWdth = 6;
+	//gfxInfo.DrawClr = BLUE;
+	//gfxInfo.FillClr = GREEN;
+	//gfxInfo.isFilled = true; //Figure is filled
+	//pOut->DrawSq(P1, gfxInfo, false);
 
 
-	// 2.3.4 - Drawing a highlighted filled triangle
-	pOut->PrintMessage("Drawing a Triangle ==> Highlighted filled, Click to Highlight");
-	pIn->GetPointClicked(x, y); //Wait for any click
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, true);
+	//// 2.2.4 - Drawing a highlighted filled square
+	//pOut->PrintMessage("Drawing a Square ==> Highlighted filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y); //Wait for any click
+	//pOut->DrawSq(P1, gfxInfo, true);
 
 
 
-	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->ClearDrawArea();
+	//pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+	//pOut->ClearDrawArea();
 
-	/// 2.4- Hexagon Test ///
-	/// =================== 
-	pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	///// 2.3- Triangle Test ///
+	///// =================== 
+	//pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
 
-	// 2.4.1 - Drawing non-filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> non-filled,  Click one point");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(ITM_HEX, pOut, P1);
-	gfxInfo.BorderWdth = 5;
-	gfxInfo.DrawClr = BLACK;
-	gfxInfo.isFilled = false; //Figure is NOT filled
-	pOut->DrawHex(P1, gfxInfo, false);
-	// 2.4.2 - Drawing highlighted non-filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted non-filled, Click to Highlight");
-	pIn->GetPointClicked(x, y); //Wait for any click
-	pOut->DrawHex(P1, gfxInfo, true);
+	//// 2.3.1 - Drawing non-filled triangle
+	//pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click three points");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->CheckPointClicked(ITM_TRI, pOut, P1);
+	//pIn->GetPointClicked(P2.x, P2.y);
+	//pIn->CheckPointClicked(ITM_TRI, pOut, P2);
+	//pIn->GetPointClicked(P3.x, P3.y);
+	//pIn->CheckPointClicked(ITM_TRI, pOut, P3);
 
+	//gfxInfo.BorderWdth = 5;
+	//gfxInfo.DrawClr = BLACK;
+	//gfxInfo.isFilled = false; //Figure is NOT filled
+	//pOut->DrawTgl(P1, P2, P3, gfxInfo, false);
 
-	// 2.4.3 - Drawing a filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> filled,  Click one point");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(ITM_HEX, pOut, P1);
-
-	gfxInfo.BorderWdth = 6;
-	gfxInfo.DrawClr = BLUE;
-	gfxInfo.FillClr = GREEN;
-	gfxInfo.isFilled = true; //Figure is filled
-	pOut->DrawHex(P1, gfxInfo, false);
+	//// 2.3.2 - Drawing highlighted non-filled triangle
+	//pOut->PrintMessage("Drawing a Triangle ==> Highlighted non-filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y); //Wait for any click
+	//pOut->DrawTgl(P1, P2, P3, gfxInfo, true);
 
 
-	// 2.4.4 - Drawing a highlighted filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted filled, Click to Highlight");
-	pIn->GetPointClicked(x, y); //Wait for any click
-	pOut->DrawHex(P1, gfxInfo, true);
+	//// 2.3.3 - Drawing a filled triangle
+	//pOut->PrintMessage("Drawing a Triangle ==> filled,  Click three points");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->CheckPointClicked(ITM_TRI, pOut, P1);
+	//pIn->GetPointClicked(P2.x, P2.y);
+	//pIn->CheckPointClicked(ITM_TRI, pOut, P2);
+	//pIn->GetPointClicked(P3.x, P3.y);
+	//pIn->CheckPointClicked(ITM_TRI, pOut, P3);
+
+	//gfxInfo.BorderWdth = 6;
+	//gfxInfo.DrawClr = BLUE;
+	//gfxInfo.FillClr = GREEN; //Figure is filled
+	//gfxInfo.isFilled = true;
+	//pOut->DrawTgl(P1, P2, P3, gfxInfo, false);
+
+
+	//// 2.3.4 - Drawing a highlighted filled triangle
+	//pOut->PrintMessage("Drawing a Triangle ==> Highlighted filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y); //Wait for any click
+	//pOut->DrawTgl(P1, P2, P3, gfxInfo, true);
 
 
 
-	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->ClearDrawArea();
+	//pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+	//pOut->ClearDrawArea();
+
+	///// 2.4- Hexagon Test ///
+	///// =================== 
+	//pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+
+	//// 2.4.1 - Drawing non-filled hexagon
+	//pOut->PrintMessage("Drawing a Hexagon ==> non-filled,  Click one point");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->CheckPointClicked(ITM_HEX, pOut, P1);
+	//gfxInfo.BorderWdth = 5;
+	//gfxInfo.DrawClr = BLACK;
+	//gfxInfo.isFilled = false; //Figure is NOT filled
+	//pOut->DrawHex(P1, gfxInfo, false);
+	//// 2.4.2 - Drawing highlighted non-filled hexagon
+	//pOut->PrintMessage("Drawing a Hexagon ==> Highlighted non-filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y); //Wait for any click
+	//pOut->DrawHex(P1, gfxInfo, true);
+
+
+	//// 2.4.3 - Drawing a filled hexagon
+	//pOut->PrintMessage("Drawing a Hexagon ==> filled,  Click one point");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->CheckPointClicked(ITM_HEX, pOut, P1);
+
+	//gfxInfo.BorderWdth = 6;
+	//gfxInfo.DrawClr = BLUE;
+	//gfxInfo.FillClr = GREEN;
+	//gfxInfo.isFilled = true; //Figure is filled
+	//pOut->DrawHex(P1, gfxInfo, false);
+
+
+	//// 2.4.4 - Drawing a highlighted filled hexagon
+	//pOut->PrintMessage("Drawing a Hexagon ==> Highlighted filled, Click to Highlight");
+	//pIn->GetPointClicked(x, y); //Wait for any click
+	//pOut->DrawHex(P1, gfxInfo, true);
+
+
+
+	//pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+	//pOut->ClearDrawArea();
 
 	/// 2.5- Circle Test ///
 	/// =================== 
@@ -234,6 +233,8 @@ int main()
 	// 2.5.1 - Drawing non-filled circle
 	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
+
+	pOut->DrawCir(P1, P1, gfxInfo, false);		//the center point to check radius 
 	pIn->GetPointClicked(P2.x, P2.y);
 	pIn->CheckPointClicked(ITM_CIRC,pOut ,P1, &P2);
 	gfxInfo.BorderWdth = 5;
@@ -271,7 +272,6 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
 
-	//////////////////////////////////////////////  yousef ADEL _end ....
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
@@ -372,7 +372,7 @@ int main()
 
 		case TO_DRAW:
 		    pOut->ClearToolBar();
-			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
+			pOut->PrintMessage("Action: Switch to Draw Mode, creating simulation tool bar");
 			pOut->CreateDrawToolBar();
 			break;
 
@@ -390,7 +390,6 @@ int main()
 		case PLAYSHAPE:
 			pOut->PrintMessage("You have selected play shape");
 			break;
-		///TODO: Add more cases for the other action types//////////////////////////////////////KARIM
 		case TO_COLOR:
 			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Switch to Color toolbar, creating Design tool bar");
@@ -519,9 +518,6 @@ int main()
 		case LOAD:
 			pOut->PrintMessage("You have selected load saved video");
 			break; 
-		
-
-			////////////////////////////////////////////////////////////////////////////////////KARIM
 		case EXIT:				
 				break;
 		}

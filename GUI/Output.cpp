@@ -1,8 +1,5 @@
 #include "Output.h"
 #include <cmath>
-//<<<<<<< HEAD
-///
-//>>>>>>> origin/adel
 #define PI 3.14159
 
 Output::Output()
@@ -19,11 +16,10 @@ Output::Output()
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 80;
-	
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
-	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
+	UI.BkGrndColor = WHITE;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 3;	//width of the figures frames
@@ -383,7 +379,7 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	delete[]Px;
 	delete[]Py;
 	Px = NULL;
-	Py = NULL;      // Good practise to set the pointer to NULL
+	Py = NULL;      // Good practice to set the pointer to NULL
 }
 
 void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) const
@@ -403,7 +399,6 @@ void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) con
 	else
 		style = FRAME;
 	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));
-
 	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);
 }
 

@@ -30,8 +30,7 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 
 	case ITM_CIRC:		//Circle validity
 	{
-		int raduis = sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2));
-		while (P1.y - UI.ToolBarHeight <raduis)		
+		while (P1.y - sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)) <UI.ToolBarHeight)
 		{
 			statusPo->ClearStatusBar();
 			statusPo->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar, Please Click another point.");
@@ -111,10 +110,10 @@ ActionType Input::GetUserAction() const
 		//[1] If user clicks on the Toolbar
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
-			//Check whick Menu item was clicked
+			//Check which Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
-			//Divide x coord of the point clicked by the menu item width (int division)
+			//Divide x cord of the point clicked by the menu item width (int division)
 			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 
 			switch (ClickedItemOrder)
@@ -135,7 +134,7 @@ ActionType Input::GetUserAction() const
 			case ITM_LOAD: return LOAD;
 			case ITM_EXIT_DRAWMODE: return EXIT;
 
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			default: return EMPTY;	//A click on empty place in design toolbar
 			}
 		}
 
@@ -152,7 +151,7 @@ ActionType Input::GetUserAction() const
 	{
 		///TODO:
 		//perform checks similar to Draw mode checks above
-		//and return the correspoding action
+		//and return the corresponding action
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
