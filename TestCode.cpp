@@ -279,34 +279,26 @@ int main()
 
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue"); // print a message in status bar
 	pIn->GetPointClicked(x, y);	//Wait for any click to finish Circle test
-	pOut->ClearDrawArea();      // Clear the drawing area 
-
-
+  
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
 	//			Input Class: Read strings from the user
 	///////////////////////////////////////////////////////////////////////////////////
-	pIn->GetPointClicked(x, y);
-	char key;
-	bool messageEntered = true;
+	string message;
+
 	pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-
 	pOut->PrintMessage("Testing Input ability to read strings");
 
-	///TODO: Add code here to 
-	// 1- Read a string from the user on the status bar
+	pIn->QuesKeyClicked();
 
-	string message;
-	while (messageEntered)
-	{
-		pOut->PrintMessage("Enter a message:");
-		message = pIn->GetSrting(pOut, messageEntered);
-		pOut->PrintMessage(message);
-		pIn->QuesPointClicked();
-	}
+	pOut->PrintMessage("Enter a message:");
+	message = pIn->GetSrting(pOut);
+	pOut->PrintMessage(message);
+
+	pIn->QuesPointClicked();
 
 	pOut->PrintMessage("You Entered " + message);
 	pIn->GetPointClicked(x, y);
