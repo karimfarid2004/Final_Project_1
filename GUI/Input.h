@@ -11,15 +11,19 @@ class Input		//The application manager should have a pointer to this class
 {
 private:
 	window *pWind;	//Pointer to the Graphics Window
-	int lengthSq = 200;
-	int lengthHexa = 100;
 public:
-	Input(window *pW);		//Consturctor
+	Input(window *pW);		//Constructor
 	void GetPointClicked(int &x, int &y) const;//Get coordinate where user clicks
-	void CheckPointClicked(int a, Output* statusPo, Point & P, Point * P2=NULL ) const;		//second point with pointer we need to check one point in each time except circle
-	void QuesPointClicked();
-	void QuesKeyClicked();
-	string GetSrting(Output* pO) const ;	 //Returns a string entered by the user
+
+	void CheckPointClicked(int a, Output* statusPo, Point & P, Point * P2=NULL ) const;		
+	//We need the second point pointer to make it null in each case except the circle
+
+	void QuesPointClicked();	 //This is necessary because if someone accidentally hits a key or clicks 
+	void QuesKeyClicked();		// the mouse that event will stay in the buffer until it
+							   // is removed, which may be at a time that input would be wanted by the user	
+								
+
+	string GetString(Output* pO) const ;	 //Returns a string entered by the user
 
 	ActionType GetUserAction() const; //Read the user click and map to an action
 

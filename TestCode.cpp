@@ -1,13 +1,11 @@
 #include "GUI\Input.h"
 #include "GUI\Output.h"
 
-
 //This is a test code to test the Input and Output classes
 
 int main()
 {
 	int x, y;
-	int color_num; //Create Input and Output objects to test
 	Output* pOut = new Output();
 	Input* pIn = pOut->CreateInput();
 
@@ -42,7 +40,7 @@ int main()
 	/// ============================================================================== ///
  
 	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	pIn->GetPointClicked(x, y); //Wait for any click to start Rectangle test
 	 
 	// 2.1.1 - Drawing non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
@@ -52,15 +50,17 @@ int main()
 	pIn->GetPointClicked(P2.x, P2.y);
 	pIn->CheckPointClicked(ITM_RECT, pOut, P2);
 
-	gfxInfo.BorderWdth = 5;          // Set the width of Rectangle borders
-	gfxInfo.DrawClr = BLACK;	    //select the color of the Rectangle borders
-	gfxInfo.isFilled = false;	    // Rectangle is NOT filled (Framed)
-	pOut->DrawRect(P1, P2, gfxInfo, false);
+	gfxInfo.BorderWdth = 5;          //Set the width of Figure borders
+	gfxInfo.DrawClr = BLACK;	    //Select the color of the Figure borders
+	gfxInfo.isFilled = false;	    //Figure is NOT filled (Framed)
+	pOut->DrawRect(P1, P2, gfxInfo, false);			/*Call the drawing function in output class 
+	                                        by sending(The first point, The second point, Information about color and if Square is filled or not ,
+											To know if square is selected(To highlight it) or not (false which means it's not selected))*/
 
 	// 2.1.2 - Drawing highlighted non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->DrawRect(P1, P2, gfxInfo, true);
+	pIn->GetPointClicked(x, y);				 // Wait for any click from the user to Highlight the non-filled Rectangle
+	pOut->DrawRect(P1, P2, gfxInfo, true);  // now the fourth parameter is true because it's Highlighted
 
 	// 2.1.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
@@ -70,16 +70,16 @@ int main()
 	pIn->GetPointClicked(P2.x, P2.y);
 	pIn->CheckPointClicked(ITM_RECT, pOut, P2);
 
-	gfxInfo.BorderWdth = 6;
-	gfxInfo.DrawClr = BLUE;	//any color for border
-	gfxInfo.FillClr = GREEN;//any color for filling
-	gfxInfo.isFilled = true;//Figure is filled
+	gfxInfo.BorderWdth = 6;			// Set the width of Figure borders
+	gfxInfo.DrawClr = BLUE;			//Select the color of the Figure borders
+	gfxInfo.FillClr = GREEN;		//Select the fill color of the Figure
+	gfxInfo.isFilled = true;		//Figure is filled
 	pOut->DrawRect(P1, P2, gfxInfo, false);
 
 	// 2.1.4 - Drawing a highlighted filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	pOut->DrawRect(P1, P2, gfxInfo, true);
+	pIn->GetPointClicked(x, y);					 // Wait for any click from the user to Highlight the filled Rectangle
+	pOut->DrawRect(P1, P2, gfxInfo, true);		// now the third parameter is true because it's Highlighted
 
 	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -88,40 +88,39 @@ int main()
 	/// =========================================================================== ///
 	
 	pOut->PrintMessage("Drawing a Square, filled/non-filled and Highlighted filled/non-filled,  Click to continue");    
-	pIn->GetPointClicked(x, y);	//Wait for any click to start Square test
+	pIn->GetPointClicked(x, y);	
 
 	// 2.2.1 - Drawing non-filled square
 	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click one point");    
 	pIn->GetPointClicked(P1.x,P1.y);          // Take the point (Centre) from the user
 	pIn->CheckPointClicked(ITM_SQU, pOut, P1);  // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not 
-	gfxInfo.BorderWdth = 5;                     // Set the width of Square borders
-	gfxInfo.DrawClr = BLACK;                   // select the color of the square borders 
-	gfxInfo.isFilled = false;                 // Square is NOT filled (Framed)
+	gfxInfo.BorderWdth = 5;                     
+	gfxInfo.DrawClr = BLACK;                   
+	gfxInfo.isFilled = false;                
 	pOut->DrawSq(P1, gfxInfo, false);       /*Call the drawing function in output class 
 	                                        by sending(The point(Centre),Information about color and if Square is filled or not ,
 											To know if square is selected(To highlight it) or not (false which means it's not selected))*/
 
 	// 2.2.2 - Drawing highlighted non-filled square
-	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");    // print a message in status bar
-	pIn->GetPointClicked(x, y);   // Wait for any click from the user to Highlight the non-filled Square
-	pOut->DrawSq(P1, gfxInfo, true);     // now the third parameter is true because it's Highlighted
-
+	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");    
+	pIn->GetPointClicked(x, y);   
+	pOut->DrawSq(P1, gfxInfo, true);     
 
 	// 2.2.3 - Drawing a filled square
-	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");   // print a message in status bar
+	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");  
 	pIn->GetPointClicked(P1.x, P1.y);              // Take the point (Centre) from the user
 	pIn->CheckPointClicked(ITM_SQU, pOut, P1);     // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not 
-	gfxInfo.BorderWdth = 6;       // Set the width of Square borders
-	gfxInfo.DrawClr = BLUE;      // select the color of the square borders
-	gfxInfo.FillClr = GREEN;     // select the fill color of the square
-	gfxInfo.isFilled = true;     //Square is filled
-	pOut->DrawSq(P1, gfxInfo, false);      //  now the third parameter is false because it's not Highlighted
+	gfxInfo.BorderWdth = 6;       
+	gfxInfo.DrawClr = BLUE;      
+	gfxInfo.FillClr = GREEN;     
+	gfxInfo.isFilled = true;   
+	pOut->DrawSq(P1, gfxInfo, false);     
 
 
 	// 2.2.4 - Drawing a highlighted filled square
-	pOut->PrintMessage("Drawing a Square ==> Highlighted filled, Click to Highlight");     // print a message in status bar
-	pIn->GetPointClicked(x, y);        // Wait for any click from the user to Highlight the filled Square
-	pOut->DrawSq(P1, gfxInfo, true);     // now the third parameter is true because it's Highlighted
+	pOut->PrintMessage("Drawing a Square ==> Highlighted filled, Click to Highlight");     
+	pIn->GetPointClicked(x, y);       
+	pOut->DrawSq(P1, gfxInfo, true);     
 
 
 	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");   // print a message in status bar
@@ -295,7 +294,7 @@ int main()
 	pIn->QuesKeyClicked();
 
 	pOut->PrintMessage("Enter a message:");
-	message = pIn->GetSrting(pOut);
+	message = pIn->GetString(pOut);
 	pOut->PrintMessage(message);
 
 	pIn->QuesPointClicked();

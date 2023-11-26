@@ -34,28 +34,23 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_PLY,
 	ITM_SAVE,
 	ITM_LOAD,
-	ITM_EXIT_DRAWMODE,		//Exit item
-	
+	ITM_EXIT_DRAWMODE,
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
 };
 
-enum PlayMenuItem //The items of the Play menu (you should add more items)
-{
-	//Note: Items are **(ordered)** here as they appear in menu
-	//If you want to change the menu items order, change the order here
-	
-	//TODO: Add more items names here
+enum PlayMenuItem //The items of the Play menu 
+{	
 	ITM_TYP_COLOR,
 	ITM_TYP_SHAPE,
 	ITM_TYP_BOTH,
 	ITM_SWITCH,
 	ITM_EXIT_PLAYMODE,
-	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
+	PLAY_ITM_COUNT		
 	
 };
-enum ShapesItems
-{
+enum ShapesItems  //The items of the Shapes menu
+{	
 	ITM_SHAPE,		//Blank item in draw mode
 	ITM_RECT,		//Rectangle item in toolbar
 	ITM_CIRC,		//Circle item in toolbar
@@ -64,8 +59,9 @@ enum ShapesItems
 	ITM_SQU,		//Square item in toolbar
 	SHAPES_ITM_COUNT
 };
-enum ColorItems
+enum ColorItems  //The items of the Colors menu
 {
+	
 	ITM_NONE,		//Blank item in draw mode
 	ITM_BLACK,		//Black color in toolbar
 	ITM_BLUE,		//Blue color in toolbar
@@ -73,10 +69,11 @@ enum ColorItems
 	ITM_ORANGE,		//Orange color in toolbar
 	ITM_RED,		//Red color in toolbar
 	ITM_YELLOW,		//Yellow color in toolbar
-	COLOR_ITM_COUNT,
+	COLOR_ITM_COUNT
 };
-enum FillColorItems
+enum FillColorItems  //The items of the FillColors menu
 {
+
 	ITM_NO_FILL,		//Blank item in draw mode and no fill in toolbar
 	ITM_BLACK_FILL,		//Black fill color in toolbar
 	ITM_BLUE_FILL,		//Blue fill color in toolbar

@@ -11,7 +11,7 @@ void Input::GetPointClicked(int &x, int &y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
-void Input::QuesPointClicked()
+void Input::QuesPointClicked()		
 {
 	pWind->FlushMouseQueue();
 }
@@ -19,9 +19,10 @@ void Input::QuesKeyClicked()
 {
 	pWind->FlushKeyQueue();
 }
-void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point * P2) const
+void Input::CheckPointClicked(int CaseShape, Output* outPtr, Point & P1 ,Point * P2) const
 {
 	//writing on statusBar for validity check
+	
 	switch (CaseShape)
 	{
 
@@ -29,10 +30,10 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 	{
 		while (P1.y < UI.ToolBarHeight)		
 		{
-			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to Draw a Rectangle, you are trying to draw on the toolbar, Please Click another point.");
+			outPtr->ClearStatusBar();
+			outPtr->PrintMessage("Failed to Draw a Rectangle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
-			statusPo->ClearStatusBar();
+			outPtr->ClearStatusBar();
 		}
 		break;
 	}
@@ -41,17 +42,17 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 	{
 		while (P1.y < UI.ToolBarHeight)
 		{
-			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to put the Center of the Circle, you are trying to draw on the toolbar, Please Click another point.");
+			outPtr->ClearStatusBar();
+			outPtr->PrintMessage("Failed to put the Center of the Circle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
-			statusPo->ClearStatusBar();
+			outPtr->ClearStatusBar();
 		}
 		while (P1.y - sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)) <UI.ToolBarHeight)
 		{
-			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar, Please Click another point.");
+			outPtr->ClearStatusBar();
+			outPtr->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P2->x, P2->y);
-			statusPo->ClearStatusBar();
+			outPtr->ClearStatusBar();
 		}
 		break;
 	}
@@ -60,34 +61,34 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 	{
 		while (P1.y < UI.ToolBarHeight)		//Triangle Validity
 		{
-			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to Draw a Triangle, you are trying to draw on the toolbar, Please Click another point.");
+			outPtr->ClearStatusBar();
+			outPtr->PrintMessage("Failed to Draw a Triangle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
-			statusPo->ClearStatusBar();
+			outPtr->ClearStatusBar();
 		}
 	break;
 	}
 
 	case ITM_HEX:
 	{
-		while (P1.y - lengthHexa * cos((PI / 6)) < UI.ToolBarHeight)		//Hexagon validity
+		while (P1.y - outPtr->GetLengthHex() * cos((PI / 6)) < UI.ToolBarHeight)		//Hexagon validity
 		{
-			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to Draw a Hexagon, you are trying to draw on the toolbar, Please Click another point.");
+			outPtr->ClearStatusBar();
+			outPtr->PrintMessage("Failed to Draw a Hexagon, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
-			statusPo->ClearStatusBar();
+			outPtr->ClearStatusBar();
 		}
 		break;
 	}
 
 	case ITM_SQU:
 	{
-		while (P1.y - lengthSq/2 < UI.ToolBarHeight)		//Square validity
+		while (P1.y - outPtr->GetLengthSq() /2 < UI.ToolBarHeight)		//Square validity
 		{
-			statusPo->ClearStatusBar();
-			statusPo->PrintMessage("Failed to Draw a Square, you are trying to draw on the toolbar, Please Click another point.");
+			outPtr->ClearStatusBar();
+			outPtr->PrintMessage("Failed to Draw a Square, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
-			statusPo->ClearStatusBar();
+			outPtr->ClearStatusBar();
 		}
 		break;
 	}
@@ -95,7 +96,7 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 
 }
 
-string Input::GetSrting(Output *pO) const 
+string Input::GetString(Output *pO) const 
 {
 	string Label;
 	char Key;
@@ -168,9 +169,7 @@ ActionType Input::GetUserAction() const
 	}
 	else if (UI.InterfaceMode == MODE_PLAY)	//GUI is in PLAY mode
 	{
-		///TODO:
-		//perform checks similar to Draw mode checks above
-		//and return the corresponding action
+		
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = (x / UI.MenuItemWidth);

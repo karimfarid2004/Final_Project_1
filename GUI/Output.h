@@ -6,7 +6,8 @@ class Output	//The application manager should have a pointer to this class
 {
 private:	
 	window* pWind;	//Pointer to the Graphics Window
-	
+	const int lengthSq ;
+	const int lengthHex;
 public:
 	int shapenum = 0;
 	int fillcolornum = 0;
@@ -24,13 +25,17 @@ public:
 	void CreateColorsToolBarTAB() const;			//creates a changeable icon for colors in draw mode toolbar
 	void CreateShapesToolBarTAB() const;			//creates a changeable icon for shapes in draw mode toolbar
 
-	// create getters and setters for the length "hexagon and square"
 
 	Input* CreateInput() const;		//creates a pointer to the Input object	
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;		//Clears the drawing area
 	void ClearToolBar() const;		//Clears current toolbar
 	
+	// create getters for the length "hexagon and square"
+	int GetLengthSq() const;
+	int GetLengthHex() const;
+
+
 	// -- Figures Drawing functions
 
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
