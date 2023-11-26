@@ -1,5 +1,9 @@
 #include "Output.h"
 #include <cmath>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/adel
 #define PI 3.14159
 
 Output::Output()
@@ -369,6 +373,11 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	int length = 100;
 	int* Px = new int[vertices];
 	int* Py = new int[vertices];
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/adel
 	for (int i = 0; i < vertices; i++)
 	{
 		Px[i] = Ctr.x + length * cos((2 * i + 1) * (PI / 6));
@@ -379,7 +388,7 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	delete[]Px;
 	delete[]Py;
 	Px = NULL;
-	Py = NULL;
+	Py = NULL;      // Good practise to set the pointer to NULL
 }
 
 void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) const
