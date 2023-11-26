@@ -6,8 +6,8 @@ class Output	//The application manager should have a pointer to this class
 {
 private:	
 	window* pWind;	//Pointer to the Graphics Window
-	Input* pin;
-	int a, b ;
+	Input* pin;		//?????????
+	int a, b ;		//?????????
 public:
 	int shapenum = 0;
 	int fillcolornum = 0;
@@ -24,6 +24,8 @@ public:
 	void CreateFillColorsToolBarTAB()const;			//creates a changable icon for fill colors in draw mode toolbar
 	void CreateColorsToolBarTAB() const;			//creates a changable icom for colors in draw mode toolbar
 	void CreateShapesToolBarTAB() const;			//creates a changable icon for shapes in draw mode toolbar
+
+	// create getters and setters for the length "hexagon and square"
 
 	Input* CreateInput() const;		//creates a pointer to the Input object	
 	void ClearStatusBar() const;	//Clears the status bar

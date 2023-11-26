@@ -1,5 +1,6 @@
 #include "Input.h"
 #include "Output.h"
+
 #define PI 3.14159
 
 Input::Input(window* pW) 
@@ -10,40 +11,67 @@ void Input::GetPointClicked(int &x, int &y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
-void Input::CheckPointClicked(int a, Point & P1 ,Point * P2) const
+void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point * P2) const
 {
-	switch (a)
+	//writing on statusBar for validity check
+	switch (CaseShape)
 	{
-	case 0:
-	{
-		while (P1.y < UI.ToolBarHeight)
-		{
-			GetPointClicked(P1.x, P1.y);
-		}
-	}
-		break;
-	case 1:
-	{
-		while (P1.y - length1/2 < UI.ToolBarHeight)
-		{
-			GetPointClicked(P1.x, P1.y);
-		}
-	}
-		break;
-	case 2:
-		while (P1.y  - length2 * cos((PI / 6)) < UI.ToolBarHeight)
-		{
-			GetPointClicked(P1.x, P1.y);
-		}
-		break;
-	case 3:
 
-		while (P1.y - UI.ToolBarHeight< sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)))
+	case ITM_RECT:		//Rectangle Validity
+	{
+		while (P1.y < UI.ToolBarHeight)		
 		{
+			statusPo->ClearStatusBar();
+			statusPo->PrintMessage("Failed to Draw a Rectangle, you are trying to draw on the toolbar, Please Click another point.");
+			GetPointClicked(P1.x, P1.y);		
+		}
+		break;
+	}
+
+	case ITM_CIRC:		//Circle validity
+	{
+		int raduis = sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2));
+		while (P1.y - UI.ToolBarHeight <raduis)		
+		{
+			statusPo->ClearStatusBar();
+			statusPo->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P2->x, P2->y);
 		}
 		break;
-	
+	}
+
+	case ITM_TRI:
+	{
+		while (P1.y < UI.ToolBarHeight)		//Triangle Validity
+		{
+			statusPo->ClearStatusBar();
+			statusPo->PrintMessage("Failed to Draw a Triangle, you are trying to draw on the toolbar, Please Click another point.");
+			GetPointClicked(P1.x, P1.y);
+		}
+	break;
+	}
+
+	case ITM_HEX:
+	{
+		while (P1.y - lengthHexa * cos((PI / 6)) < UI.ToolBarHeight)		//Hexagon validity
+		{
+			statusPo->ClearStatusBar();
+			statusPo->PrintMessage("Failed to Draw a Hexagon, you are trying to draw on the toolbar, Please Click another point.");
+			GetPointClicked(P1.x, P1.y);
+		}
+		break;
+	}
+
+	case ITM_SQU:
+	{
+		while (P1.y - lengthSq/2 < UI.ToolBarHeight)		//Square validity
+		{
+			statusPo->ClearStatusBar();
+			statusPo->PrintMessage("Failed to Draw a Square, you are trying to draw on the toolbar, Please Click another point.");
+			GetPointClicked(P1.x, P1.y);
+		}
+		break;
+	}
 	}
 
 }
@@ -56,9 +84,9 @@ string Input::GetSrting(Output *pO) const
 	while(1)
 	{
 		pWind->WaitKeyPress(Key);
-		if(Key == 27 )	//ESCAPE key is pressed
-			return "";	//returns nothing as user has cancelled label
-		if(Key == 13 )	//ENTER key is pressed
+		if(Key == 27 )			//ESCAPE key is pressed
+			return "";			//returns nothing as user has cancelled label
+		if(Key == 13 )			//ENTER key is pressed
 		{
 			string str = entered + Label;
 			return str;

@@ -1,6 +1,7 @@
 #include "GUI\Input.h"
 #include "GUI\Output.h"
 
+
 //This is a test code to test the Input and Output classes
 
 int main()
@@ -48,9 +49,9 @@ int main()
 	// 2.1.1 - Drawing non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(0,P1);
+	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
 	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(0, P2);
+	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	//any color for border
@@ -66,9 +67,9 @@ int main()
 	// 2.1.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(0, P1);
+	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
 	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(0, P2);
+	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;	//any color for border
@@ -97,7 +98,7 @@ int main()
 	// 2.2.1 - Drawing non-filled square
 	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click one point");
 	pIn->GetPointClicked(P1.x,P1.y);
-	pIn->CheckPointClicked(1, P1);
+	pIn->CheckPointClicked(ITM_SQU, pOut, P1);
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;
 	gfxInfo.isFilled = false; //Figure is NOT filled
@@ -112,7 +113,7 @@ int main()
 	// 2.2.3 - Drawing a filled square
 	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(1, P1);
+	pIn->CheckPointClicked(ITM_SQU, pOut, P1);
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;
 	gfxInfo.FillClr = GREEN;
@@ -139,11 +140,11 @@ int main()
 	// 2.3.1 - Drawing non-filled triangle
 	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click three points");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(0, P1);
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
 	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(0, P2);
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
 	pIn->GetPointClicked(P3.x, P3.y);
-	pIn->CheckPointClicked(0, P3);
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;
@@ -159,11 +160,11 @@ int main()
 	// 2.3.3 - Drawing a filled triangle
 	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click three points");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(0, P1);
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
 	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(0, P2);
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
 	pIn->GetPointClicked(P3.x, P3.y);
-	pIn->CheckPointClicked(0, P3);
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;
@@ -191,7 +192,7 @@ int main()
 	// 2.4.1 - Drawing non-filled hexagon
 	pOut->PrintMessage("Drawing a Hexagon ==> non-filled,  Click one point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(2, P1);
+	pIn->CheckPointClicked(ITM_HEX, pOut, P1);
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;
 	gfxInfo.isFilled = false; //Figure is NOT filled
@@ -205,7 +206,7 @@ int main()
 	// 2.4.3 - Drawing a filled hexagon
 	pOut->PrintMessage("Drawing a Hexagon ==> filled,  Click one point");
 	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->CheckPointClicked(2, P1);
+	pIn->CheckPointClicked(ITM_HEX, pOut, P1);
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;
@@ -234,7 +235,7 @@ int main()
 	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(3, P1, &P2);
+	pIn->CheckPointClicked(ITM_CIRC,pOut ,P1, &P2);
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;
 	gfxInfo.isFilled = false; //Figure is NOT filled
@@ -250,7 +251,7 @@ int main()
 	pOut->PrintMessage("Drawing a Circle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
-	pIn->CheckPointClicked(3, P1, &P2);
+	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P2);
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;

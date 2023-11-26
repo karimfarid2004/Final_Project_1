@@ -1,9 +1,8 @@
 #include "Output.h"
 #include <cmath>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/adel
+//<<<<<<< HEAD
+///
+//>>>>>>> origin/adel
 #define PI 3.14159
 
 Output::Output()
@@ -373,15 +372,11 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const
 	int length = 100;
 	int* Px = new int[vertices];
 	int* Py = new int[vertices];
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin/adel
 	for (int i = 0; i < vertices; i++)
 	{
-		Px[i] = Ctr.x + length * cos((2 * i + 1) * (PI / 6));
-		Py[i] = Ctr.y + length * sin((2 * i + 1) * (PI / 6));
+		Px[i] = Ctr.x + length * cos((i) * (PI / 3));
+		Py[i] = Ctr.y + length * sin((i) * (PI / 3));
 	}
 
 	pWind->DrawPolygon(Px, Py, vertices, style);
