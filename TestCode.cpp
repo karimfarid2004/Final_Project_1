@@ -279,7 +279,7 @@ int main()
 
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue"); // print a message in status bar
 	pIn->GetPointClicked(x, y);	//Wait for any click to finish Circle test
-  
+	pOut->ClearDrawArea();
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
