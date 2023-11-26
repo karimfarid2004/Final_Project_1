@@ -287,26 +287,31 @@ int main()
 	// TEST 3: 
 	//			Input Class: Read strings from the user
 	///////////////////////////////////////////////////////////////////////////////////
+	pIn->GetPointClicked(x, y);
+	char key;
+	bool messageEntered = true;
 	pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
+
 
 	pOut->PrintMessage("Testing Input ability to read strings");
 
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
-	pOut->PrintMessage("Enter a message :");
+
 	string message;
-	message = pIn->GetSrting(pOut);
-	pOut->PrintMessage(message);
-	// 2- After reading the string clear the status bar
-	//pOut->ClearStatusBar();
-	pIn->GetPointClicked(x, y);	//Wait for any click
-	// 
-	// 3- print on the status bar "You Entered" then print the string
-	pOut->PrintMessage("You Entered ");
-	pOut->PrintMessage(message);
-	pOut->ClearDrawArea();
-	pIn->GetPointClicked(x, y);	//Wait for any click
+	while (messageEntered)
+	{
+		pOut->PrintMessage("Enter a message:");
+		message = pIn->GetSrting(pOut, messageEntered);
+		pOut->PrintMessage(message);
+		pIn->QuesPointClicked();
+	}
+
+	pOut->PrintMessage("You Entered " + message);
+	pIn->GetPointClicked(x, y);
+
+
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
 	//			Input Class : Check for the user action

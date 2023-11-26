@@ -11,6 +11,10 @@ void Input::GetPointClicked(int &x, int &y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
+void Input::QuesPointClicked()
+{
+	pWind->FlushMouseQueue();
+}
 void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point * P2) const
 {
 	//writing on statusBar for validity check
@@ -87,11 +91,10 @@ void Input::CheckPointClicked(int CaseShape, Output* statusPo, Point & P1 ,Point
 
 }
 
-string Input::GetSrting(Output *pO) const 
+string Input::GetSrting(Output *pO,bool&msgent) const 
 {
 	string Label;
 	char Key;
-	string entered = "You Entered ";
 	while(1)
 	{
 
@@ -100,8 +103,8 @@ string Input::GetSrting(Output *pO) const
 			return "";			//returns nothing as user has cancelled label
 		if(Key == 13 )			//ENTER key is pressed
 		{
-			string str = entered + Label;
-			return str;
+			msgent = false;
+			return Label;
 		}
 		if((Key == 8) && (Label.size() >= 1))	//BackSpace is pressed
 			Label.resize(Label.size() -1 );			
