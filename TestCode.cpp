@@ -135,7 +135,7 @@ int main()
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to start Triangle test
 
 	// 2.3.1 - Drawing non-filled triangle
-	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click first point");
+	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click three points");    
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P1);        // Check the fisrt point if it's Valid (Inside the Drawing Area) or Not
 	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click second point");
@@ -160,7 +160,7 @@ int main()
 
 	// 2.3.3 - Drawing a filled triangle
 
-	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click first points");
+	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click three points");    
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P1);        // Check the fisrt point if it's Valid (Inside the Drawing Area) or Not
 	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click second point");
@@ -547,3 +547,5 @@ int main()
 	delete pOut;
 	return 0;
 }
+
+
