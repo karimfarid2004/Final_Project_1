@@ -6,8 +6,8 @@ class Output	//The application manager should have a pointer to this class
 {
 private:	
 	window* pWind;	//Pointer to the Graphics Window
-	const int lengthSq ;
-	const int lengthHex;
+	const int lengthSq ;   // Length of square
+	const int lengthHex;   // Length of hexagon
 public:
 	int shapenum = 0;
 	int fillcolornum = 0;

@@ -2,7 +2,7 @@
 #include <cmath>
 #define PI 3.14159
 
-Output::Output():lengthHex(100),lengthSq(200)
+Output::Output():lengthHex(100),lengthSq(200)  // Initialize length of hexagon and square
 {
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
@@ -291,26 +291,26 @@ int Output::GetLengthHex() const
 
 void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
-	color DrawingClr;						  // To determinate either the Figure will be drawn Highlighted or Not
+	color DrawingClr;						          // To determinate either the Figure will be drawn Highlighted or Not
 	if (selected)
-		DrawingClr = UI.HighlightColor;		 //Figure should be drawn highlighted
+		DrawingClr = UI.HighlightColor;		          //Figure should be drawn highlighted
 	else
-		DrawingClr = RectGfxInfo.DrawClr;	 // Figure should be drawn with a certain color ( Not Highlighted)
+		DrawingClr = RectGfxInfo.DrawClr;	          // Figure should be drawn with a certain color ( Not Highlighted)
 
-	pWind->SetPen(DrawingClr, 1);				 // Set the Pen Color by a certain color  (Highlighted or Not) and its Size
-	drawstyle style;							 // To determinate either the Figure will be drawn Filled or Framed
+	pWind->SetPen(DrawingClr, 1);				      // Set the Pen Color by a certain color  (Highlighted or Not) and its Size
+	drawstyle style;							      // To determinate either the Figure will be drawn Filled or Framed
 	if (RectGfxInfo.isFilled)
 	{
-		style = FILLED;							//Figure should be drawn filled
-		pWind->SetBrush(RectGfxInfo.FillClr);	//Set the brush Color by a certain color (FillClr) if Figure is filled
+		style = FILLED;							      //Figure should be drawn filled
+		pWind->SetBrush(RectGfxInfo.FillClr);	      //Set the brush Color by a certain color (FillClr) if Figure is filled
 	}
 	else
-		style = FRAME;							// Figure should be drawn Framed (Not Filled)
+		style = FRAME;		                          // Figure should be drawn Framed (Not Filled)
 
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style); /*Call the built in function DrawRectangle in CMUgraphicsLib to draw the Rectangle
-														  by sending(X coordinate of First point, Y coordinate of First point,
-														  X coordinate of Second point, Y coordinate of Second point,The style of drawing(Filled or Framed))*/
+														    by sending(X coordinate of First point, Y coordinate of First point,
+														       X coordinate of Second point, Y coordinate of Second point,The style of drawing(Filled or Framed))*/
 
 
 }
@@ -342,8 +342,8 @@ void Output::DrawSq(Point Ctr, GfxInfo SqGfxInfo, bool selected) const          
 		P2.y = Ctr.y + lengthSq / 2;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);  /*Call the built in function DrawRectangle in CMUgraphicsLib to draw the Square
-		                                                  by sending(X coordinate of First point, Y coordinate of First point,
-														  X coordinate of Second point, Y coordinate of Second point,The style of drawing(Filled or Framed))*/
+		                                                    by sending(X coordinate of First point, Y coordinate of First point,
+														      X coordinate of Second point, Y coordinate of Second point,The style of drawing(Filled or Framed))*/
 		                                                      									
 }
 
@@ -366,7 +366,7 @@ void Output::DrawTgl(Point P1, Point P2, Point P3, GfxInfo TglGfxInfo, bool sele
 	}
 	else
 		style = FRAME;        
-	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);          /* Call the built in function DrawTriangle in CMUgraphicsLib to draw the Triangle
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);      /* Call the built in function DrawTriangle in CMUgraphicsLib to draw the Triangle
 	                                                                          by sending(X coordinate of First point ,Y coordinate of First point,X coordinate of Second point ,Y coordinate of Second point
 																			    X coordinate of Third point ,Y coordinate of Third point,The style of drawing(Filled or Framed)) */
 
@@ -394,18 +394,19 @@ void Output::DrawHex(Point Ctr, GfxInfo HexGfxInfo, bool selected) const        
 	int* Px = new int[vertices];    // Array of X coordinate of Hexagon points
 	int* Py = new int[vertices];   // Array of Y coordinate of Hexagon points
 
-	//Set the values of Array of the vertices coordinates of Hexagon points 
+	//Set the values of the Array of vertices coordinates of Hexagon points 
 	for (int i = 0; i < vertices; i++)
 	{
 		Px[i] = Ctr.x + lengthHex * cos((i) * (PI / 3));  //NOTE: The angle between two consecutive points is PI / 3
-		Py[i] = Ctr.y - lengthHex * sin((i) * (PI / 3));  
+		Py[i] = Ctr.y - lengthHex * sin((i) * (PI / 3));  //======================================================//
+		
 	}
 
-	pWind->DrawPolygon(Px, Py, vertices, style);           /* Call the built in function DrawPolygon in CMUgraphicsLib to draw the Hexagon
-	                                                       by sending(Array of x coordinate, Array of y coordinate, Number of vertices, The style of drawing(Filled or Framed)) */
+	pWind->DrawPolygon(Px, Py, vertices, style);  /* Call the built in function DrawPolygon in CMUgraphicsLib to draw the Hexagon
+	                                                   by sending(Array of x coordinate, Array of y coordinate, Number of vertices, The style of drawing(Filled or Framed)) */
 	delete[]Px;           
 	delete[]Py;
-	Px = NULL;      
+	Px = NULL;        // Good practice to set pointers to null before the end of scope 
 	Py = NULL;
 
 }
@@ -427,11 +428,11 @@ void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) con
 	}
 	else
 		style = FRAME;                         
-	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));  // Calculate the radius of the Circle
-	pWind->DrawCircle(Ctr.x, Ctr.y, 1, style);							// determinate the center point
+	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));   // Calculate the radius of the Circle
+	pWind->DrawCircle(Ctr.x, Ctr.y, 1, style);							  // Determinate the center point on window
 
-	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);      /*Call the built in function DrawCircle in CMUgraphicsLib to draw the Circle
-														   by sending (X coordinate of center point ,Y coordinate of center point,Radius of the Circle,The style of drawing(Filled or Framed))*/
+	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);   /*Call the built in function DrawCircle in CMUgraphicsLib to draw the Circle
+														  by sending (X coordinate of center point ,Y coordinate of center point,Radius of the Circle,The style of drawing(Filled or Framed))*/
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
