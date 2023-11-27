@@ -38,10 +38,10 @@ int main()
 
 	/// =============================2.1- Rectangle Test============================== ///
 	/// ============================================================================== ///
- 
-	/*pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue"); // print a message in status bar
+
+	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue"); // print a message in status bar
 	pIn->GetPointClicked(x, y);                       //Wait for any click to start Rectangle test
-	 
+
 	// 2.1.1 - Drawing non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
@@ -53,9 +53,9 @@ int main()
 	gfxInfo.BorderWdth = 5;                           //Set the width of Figure (Rectangle) borders
 	gfxInfo.DrawClr = BLACK;	                      //Select the color of the Figure (Rectangle) borders
 	gfxInfo.isFilled = false;	                      //Figure (Rectangle) is NOT filled (Framed)
-	pOut->DrawRect(P1, P2, gfxInfo, false);	 /*Call the drawing function (DrawRect) in output class 
-	                                           by sending(The first point, The second point, Information about color and if Rectangle is filled or not ,
-											     To know if Rectangle is selected(To highlight it) or not (false which means it's not selected))
+	pOut->DrawRect(P1, P2, gfxInfo, false);	 /*Call the drawing function (DrawRect) in output class
+											   by sending(The first point, The second point, Information about color and if Rectangle is filled or not ,
+												 To know if Rectangle is selected(To highlight it) or not (false which means it's not selected))*/
 
 	// 2.1.2 - Drawing highlighted non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
@@ -82,208 +82,212 @@ int main()
 	pOut->DrawRect(P1, P2, gfxInfo, true);		      // now the fourth parameter is true because it's Highlighted
 
 	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish the Rectangle test 
-	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test 
+	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish the Rectangle test
+	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test
 
 	/// =============================2.2- Square Test============================== ///
 	/// =========================================================================== ///
-	
-	pOut->PrintMessage("Drawing a Square, filled/non-filled and Highlighted filled/non-filled,  Click to continue");    
+
+	pOut->PrintMessage("Drawing a Square, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to start Square test
 
 	// 2.2.1 - Drawing non-filled square
-	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click one point");    
+	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click one point");
 	pIn->GetPointClicked(P1.x,P1.y);                  // Take the point (Centre) from the user
-	pIn->CheckPointClicked(ITM_SQU, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not 
-	gfxInfo.BorderWdth = 5;                     
-	gfxInfo.DrawClr = BLACK;                   
-	gfxInfo.isFilled = false;                
-	pOut->DrawSq(P1, gfxInfo, false);   /*Call the drawing function (DrawSq) in output class 
-	                                      by sending(The point(Centre),Information about color and if Square is filled or not ,
-										      To know if square is selected(To highlight it) or not (false which means it's not selected))
+	pIn->CheckPointClicked(ITM_SQU, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;
+	gfxInfo.isFilled = false;
+	pOut->DrawSq(P1, gfxInfo, false);   /*Call the drawing function (DrawSq) in output class
+										  by sending(The point(Centre),Information about color and if Square is filled or not ,
+											  To know if square is selected(To highlight it) or not (false which means it's not selected))*/
 
 	// 2.2.2 - Drawing highlighted non-filled square
-	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");    
+	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the non-filled Square
-	pOut->DrawSq(P1, gfxInfo, true);     
+	pOut->DrawSq(P1, gfxInfo, true);
 
 	// 2.2.3 - Drawing a filled square
-	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");  
+	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the point (Centre) from the user
-	pIn->CheckPointClicked(ITM_SQU, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not 
-	gfxInfo.BorderWdth = 6;       
-	gfxInfo.DrawClr = BLUE;      
-	gfxInfo.FillClr = GREEN;     
-	gfxInfo.isFilled = true;   
-	pOut->DrawSq(P1, gfxInfo, false);     
+	pIn->CheckPointClicked(ITM_SQU, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;
+	gfxInfo.FillClr = GREEN;
+	gfxInfo.isFilled = true;
+	pOut->DrawSq(P1, gfxInfo, false);
 
 
 	// 2.2.4 - Drawing a highlighted filled square
-	pOut->PrintMessage("Drawing a Square ==> Highlighted filled, Click to Highlight");     
-	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the filled Square    
-	pOut->DrawSq(P1, gfxInfo, true);        
+	pOut->PrintMessage("Drawing a Square ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the filled Square
+	pOut->DrawSq(P1, gfxInfo, true);
 
 
-	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");  
+	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish Square test
-	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test 
+	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test
 
 	/// =============================2.3- Triangle Test============================== ///
-    /// ============================================================================= ///
+	/// ============================================================================= ///
 
-	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");    
+	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to start Triangle test
 
 	// 2.3.1 - Drawing non-filled triangle
-	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click three points");    
+	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click first point");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P1);        // Check the fisrt point if it's Valid (Inside the Drawing Area) or Not
+	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click second point");
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P2);        // Check the second point if it's Valid (Inside the Drawing Area) or Not
+	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click third point");
 	pIn->GetPointClicked(P3.x, P3.y);                 // Take the third point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P3);        // Check the third point if it's Valid (Inside the Drawing Area) or Not
 
-	gfxInfo.BorderWdth = 5;      
-	gfxInfo.DrawClr = BLACK;      
-	gfxInfo.isFilled = false;     
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, false);  /*Call the drawing function (DrawTgl) in output class 
-	                                              by sending(The first point,The second point,The third point,Information about color and if Triangle is filled or not,
-										           To know if Triangle is selected(To highlight it) or not (false which means it's not selected))
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;
+	gfxInfo.isFilled = false;
+	pOut->DrawTgl(P1, P2, P3, gfxInfo, false);  /*Call the drawing function (DrawTgl) in output class
+												  by sending(The first point,The second point,The third point,Information about color and if Triangle is filled or not,
+												   To know if Triangle is selected(To highlight it) or not (false which means it's not selected))*/
 
 	// 2.3.2 - Drawing highlighted non-filled triangle
-	pOut->PrintMessage("Drawing a Triangle ==> Highlighted non-filled, Click to Highlight");     
+	pOut->PrintMessage("Drawing a Triangle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the non-filled Triangle
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, true);     
+	pOut->DrawTgl(P1, P2, P3, gfxInfo, true);
 
 
 	// 2.3.3 - Drawing a filled triangle
 
-	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click three points");    
+	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click first points");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P1);        // Check the fisrt point if it's Valid (Inside the Drawing Area) or Not
+	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click second point");
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P2);        // Check the second point if it's Valid (Inside the Drawing Area) or Not
+	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click third point");
 	pIn->GetPointClicked(P3.x, P3.y);                 // Take the third point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P3);        // Check the third point if it's Valid (Inside the Drawing Area) or Not
 
-	gfxInfo.BorderWdth = 6;    
-	gfxInfo.DrawClr = BLUE;    
-	gfxInfo.FillClr = GREEN;  
-	gfxInfo.isFilled = true;  
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, false);    
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;
+	gfxInfo.FillClr = GREEN;
+	gfxInfo.isFilled = true;
+	pOut->DrawTgl(P1, P2, P3, gfxInfo, false);
 
 
-	// 2.3.4 - Drawing a highlighted filled triangle 
-	pOut->PrintMessage("Drawing a Triangle ==> Highlighted filled, Click to Highlight");    
+	// 2.3.4 - Drawing a highlighted filled triangle
+	pOut->PrintMessage("Drawing a Triangle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the filled Triangle
-	pOut->DrawTgl(P1, P2, P3, gfxInfo, true);    
+	pOut->DrawTgl(P1, P2, P3, gfxInfo, true);
 
 
 
-	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");     
+	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish Triangle test
-	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test 
+	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test
 
 	/// =============================2.4- Hexagon Test============================== ///
-    /// ============================================================================ ///
+	/// ============================================================================ ///
 
-	pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");    
+	pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);                       //Wait for any click to start Hexagon test
 
 	// 2.4.1 - Drawing non-filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> non-filled,  Click one point");    
+	pOut->PrintMessage("Drawing a Hexagon ==> non-filled,  Click one point");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the point (Centre) from the user
 	pIn->CheckPointClicked(ITM_HEX, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
-	gfxInfo.BorderWdth = 5;         
-	gfxInfo.DrawClr = BLACK;       
-	gfxInfo.isFilled = false;      
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;
+	gfxInfo.isFilled = false;
 	pOut->DrawHex(P1, gfxInfo, false);  /*Call the drawing function(DrawHex) in output class
-	                                      by sending(The point(Centre),Information about color and if Hexagon is filled or not ,
-										    To know if Hexagon is selected(To highlight it) or not (false which means it's not selected))
+										  by sending(The point(Centre),Information about color and if Hexagon is filled or not ,
+											To know if Hexagon is selected(To highlight it) or not (false which means it's not selected))*/
 
 	// 2.4.2 - Drawing highlighted non-filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted non-filled, Click to Highlight");    
+	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the non-filled Hexagon
-	pOut->DrawHex(P1, gfxInfo, true);  
+	pOut->DrawHex(P1, gfxInfo, true);
 
 
 	// 2.4.3 - Drawing a filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> filled,  Click one point");    
+	pOut->PrintMessage("Drawing a Hexagon ==> filled,  Click one point");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the point (Centre) from the user
 	pIn->CheckPointClicked(ITM_HEX, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
 
-	gfxInfo.BorderWdth = 6;         
-	gfxInfo.DrawClr = BLUE;          
-	gfxInfo.FillClr = GREEN;         
-	gfxInfo.isFilled = true;        
-	pOut->DrawHex(P1, gfxInfo, false);  
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;
+	gfxInfo.FillClr = GREEN;
+	gfxInfo.isFilled = true;
+	pOut->DrawHex(P1, gfxInfo, false);
 
 
 	// 2.4.4 - Drawing a highlighted filled hexagon
-	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted filled, Click to Highlight");    
+	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the filled Hexagon
 	pOut->DrawHex(P1, gfxInfo, true);                 // now the third parameter is true because it's Highlighted
 
 
 
-	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");   
+	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish Hexagon test
-	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test      
+	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test
 
 	/// =============================2.5- Circle Test=============================== ///
-    /// ============================================================================ ///
+	/// ============================================================================ ///
 
-	pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");  
+	pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to start Circle test
 
 	// 2.5.1 - Drawing non-filled circle
-	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click two points");  
+	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point (Centre) from the user
 	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P1);  // check the centre point (not to draw on the tool bar)
 	pOut->DrawCir(P1, P1, gfxInfo, false);		      // To draw the center point to be able to determinate the radius much easier
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_CIRC,pOut ,P1, &P2);   // Check the points if they are Valid ( not to draw on the tool bar) or Not
-	gfxInfo.BorderWdth = 5;     
-	gfxInfo.DrawClr = BLACK;    
-	gfxInfo.isFilled = false;   
-	pOut->DrawCir(P1, P2, gfxInfo, false);  /*Call the drawing function (DrawCir) in output class 
-	                                         by sending(The first point (Centre),the second point,Information about color and if Circle is filled or not ,
-											  To know if Circle is selected(To highlight it) or not (false which means it's not selected))
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;
+	gfxInfo.isFilled = false;
+	pOut->DrawCir(P1, P2, gfxInfo, false);  /*Call the drawing function (DrawCir) in output class
+											 by sending(The first point (Centre),the second point,Information about color and if Circle is filled or not ,
+											  To know if Circle is selected(To highlight it) or not (false which means it's not selected))*/
 
 	// 2.5.2 - Drawing highlighted non-filled circle
-	pOut->PrintMessage("Drawing a Circle ==> Highlighted non-filled, Click to Highlight"); 
+	pOut->PrintMessage("Drawing a Circle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the non-filled Circle
-	pOut->DrawCir(P1, P2, gfxInfo, true);   
+	pOut->DrawCir(P1, P2, gfxInfo, true);
 
 
 	// 2.5.3 - Drawing a filled circle
-	pOut->PrintMessage("Drawing a Circle ==> filled,  Click two points"); 
+	pOut->PrintMessage("Drawing a Circle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point (Centre) from the user
 	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P1);  // check the centre point (not to draw on the tool bar)
-	pOut->DrawCir(P1, P1, gfxInfo, false);	          // To draw the center point to be able to determinate the radius much easier 
+	pOut->DrawCir(P1, P1, gfxInfo, false);	          // To draw the center point to be able to determinate the radius much easier
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P2);  // Check the points if they are Valid ( not to draw on the tool bar) or Not
 
-	gfxInfo.BorderWdth = 6;  
-	gfxInfo.DrawClr = BLUE;   
-	gfxInfo.FillClr = GREEN; 
-	gfxInfo.isFilled = true; 
-	pOut->DrawCir(P1, P2, gfxInfo, false);   
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;
+	gfxInfo.FillClr = GREEN;
+	gfxInfo.isFilled = true;
+	pOut->DrawCir(P1, P2, gfxInfo, false);
 
 
 	// 2.5.4 - Drawing a highlighted filled circle
-	pOut->PrintMessage("Drawing a Circle ==> Highlighted filled, Click to Highlight"); 
+	pOut->PrintMessage("Drawing a Circle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the filled Circle
 	pOut->DrawCir(P1, P2, gfxInfo, true);
 
 
 
-	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue"); 
+	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish Circle test
 	pOut->ClearDrawArea();
 
 	///////////////////////////////////////////////////////////////////////////////////
-	// TEST 3: 
+	// TEST 3:
 	//			Input Class: Read strings from the user
 	///////////////////////////////////////////////////////////////////////////////////
 	string message;
@@ -304,17 +308,17 @@ int main()
 	pOut->PrintMessage("You Entered " + message);
 	pIn->GetPointClicked(x, y);
 
-	*/
+
 	///////////////////////////////////////////////////////////////////////////////////
-	// TEST 4: 
+	// TEST 4:
 	//			Input Class : Check for the user action
 	///////////////////////////////////////////////////////////////////////////////////
 	pOut->PrintMessage("TEST4: Testing Input ability to detect User Action, click anywhere");
 
 	ActionType ActType;
 
-	
-	///TODO:  
+
+	///TODO:
 	//You must add a case for each action (both Draw mode and Play mode actions)
 	//Add cases for the missing actions below
 	do
@@ -373,7 +377,7 @@ int main()
 		case STATUS:
 			pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
 			break;
- 
+
 		case DRAWING_AREA:
 			pOut->PrintMessage("Action: a click on the Drawing Area, Click anywhere");
 			break;
@@ -383,7 +387,7 @@ int main()
 			break;
 
 		case TO_DRAW:
-		    pOut->ClearToolBar();
+			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simulation tool bar");
 			pOut->CreateDrawToolBar();
 			break;
@@ -395,7 +399,7 @@ int main()
 			break;
 		case PLAYBOTH:
 			pOut->PrintMessage("You have selected play color and shape");
-			break; 
+			break;
 		case PLAYCOLOR:
 			pOut->PrintMessage("You have selected play color ");
 			break;
@@ -521,14 +525,14 @@ int main()
 			break;
 		case PLYVID:
 			pOut->PrintMessage("You have selected play recorded video");
-			break; 
+			break;
 		case SAVE:
 			pOut->PrintMessage("You have selected save video");
-			break; 
+			break;
 		case LOAD:
 			pOut->PrintMessage("You have selected load saved video");
-			break; 
-		case EXIT:				
+			break;
+		case EXIT:
 				break;
 		}
 	}while(ActType != EXIT);
@@ -540,8 +544,6 @@ int main()
 
 
 	delete pIn;
-	delete pOut;	
+	delete pOut;
 	return 0;
 }
-
-
