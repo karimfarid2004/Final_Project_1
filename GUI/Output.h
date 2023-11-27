@@ -2,12 +2,12 @@
 #define OUPTUT_H
 #include "Input.h"
 
-class Output	//The application manager should have a pointer to this class
+class Output	           //The application manager should have a pointer to this class
 {
 private:	
-	window* pWind;	//Pointer to the Graphics Window
-	const int lengthSq ;   // Length of square
-	const int lengthHex;   // Length of hexagon
+	window* pWind;	       //Pointer to the Graphics Window
+	const int lengthSq ;   // Length of Square
+	const int lengthHex;   // Length of Hexagon
 public:
 	int shapenum = 0;
 	int fillcolornum = 0;
