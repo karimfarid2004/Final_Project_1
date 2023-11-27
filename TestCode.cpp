@@ -39,7 +39,7 @@ int main()
 	/// =============================2.1- Rectangle Test============================== ///
 	/// ============================================================================== ///
  
-	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue"); // print a message in status bar
+	/*pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue"); // print a message in status bar
 	pIn->GetPointClicked(x, y);                       //Wait for any click to start Rectangle test
 	 
 	// 2.1.1 - Drawing non-filled rectangle
@@ -55,7 +55,7 @@ int main()
 	gfxInfo.isFilled = false;	                      //Figure (Rectangle) is NOT filled (Framed)
 	pOut->DrawRect(P1, P2, gfxInfo, false);	 /*Call the drawing function (DrawRect) in output class 
 	                                           by sending(The first point, The second point, Information about color and if Rectangle is filled or not ,
-											     To know if Rectangle is selected(To highlight it) or not (false which means it's not selected))*/
+											     To know if Rectangle is selected(To highlight it) or not (false which means it's not selected))
 
 	// 2.1.2 - Drawing highlighted non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
@@ -100,7 +100,7 @@ int main()
 	gfxInfo.isFilled = false;                
 	pOut->DrawSq(P1, gfxInfo, false);   /*Call the drawing function (DrawSq) in output class 
 	                                      by sending(The point(Centre),Information about color and if Square is filled or not ,
-										      To know if square is selected(To highlight it) or not (false which means it's not selected))*/
+										      To know if square is selected(To highlight it) or not (false which means it's not selected))
 
 	// 2.2.2 - Drawing highlighted non-filled square
 	pOut->PrintMessage("Drawing a Square ==> Highlighted non-filled, Click to Highlight");    
@@ -148,7 +148,7 @@ int main()
 	gfxInfo.isFilled = false;     
 	pOut->DrawTgl(P1, P2, P3, gfxInfo, false);  /*Call the drawing function (DrawTgl) in output class 
 	                                              by sending(The first point,The second point,The third point,Information about color and if Triangle is filled or not,
-										           To know if Triangle is selected(To highlight it) or not (false which means it's not selected))*/
+										           To know if Triangle is selected(To highlight it) or not (false which means it's not selected))
 
 	// 2.3.2 - Drawing highlighted non-filled triangle
 	pOut->PrintMessage("Drawing a Triangle ==> Highlighted non-filled, Click to Highlight");     
@@ -199,7 +199,7 @@ int main()
 	gfxInfo.isFilled = false;      
 	pOut->DrawHex(P1, gfxInfo, false);  /*Call the drawing function(DrawHex) in output class
 	                                      by sending(The point(Centre),Information about color and if Hexagon is filled or not ,
-										    To know if Hexagon is selected(To highlight it) or not (false which means it's not selected))*/
+										    To know if Hexagon is selected(To highlight it) or not (false which means it's not selected))
 
 	// 2.4.2 - Drawing highlighted non-filled hexagon
 	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted non-filled, Click to Highlight");    
@@ -248,7 +248,7 @@ int main()
 	gfxInfo.isFilled = false;   
 	pOut->DrawCir(P1, P2, gfxInfo, false);  /*Call the drawing function (DrawCir) in output class 
 	                                         by sending(The first point (Centre),the second point,Information about color and if Circle is filled or not ,
-											  To know if Circle is selected(To highlight it) or not (false which means it's not selected))*/
+											  To know if Circle is selected(To highlight it) or not (false which means it's not selected))
 
 	// 2.5.2 - Drawing highlighted non-filled circle
 	pOut->PrintMessage("Drawing a Circle ==> Highlighted non-filled, Click to Highlight"); 
@@ -304,7 +304,7 @@ int main()
 	pOut->PrintMessage("You Entered " + message);
 	pIn->GetPointClicked(x, y);
 
-
+	*/
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
 	//			Input Class : Check for the user action
@@ -327,11 +327,11 @@ int main()
 			pOut->PrintMessage("You have selected the select");
 			break;
 		case TO_ShapesToolBar:
-			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Switch to shapes tool bar, creating Design tool bar");
 			pOut->CreateShapesToolBar();
 			break;
 		case DRAW_RECT:
+			pOut->ClearDrawArea();
 			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
 			pOut->CreateDrawToolBar();
@@ -339,6 +339,7 @@ int main()
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_CIRCLE:
+			pOut->ClearDrawArea();
 			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
 			pOut->CreateDrawToolBar();
@@ -346,6 +347,7 @@ int main()
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_TRIANGLE:
+			pOut->ClearDrawArea();
 			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Draw a Triangle , Click anywhere");
 			pOut->CreateDrawToolBar();
@@ -353,6 +355,7 @@ int main()
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_HEXAGON:
+			pOut->ClearDrawArea();
 			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Draw a Hexagon , Click anywhere");
 			pOut->CreateDrawToolBar();
@@ -360,6 +363,7 @@ int main()
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_SQUARE:
+			pOut->ClearDrawArea();
 			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Draw a Square , Click anywhere");
 			pOut->CreateDrawToolBar();
@@ -399,101 +403,99 @@ int main()
 			pOut->PrintMessage("You have selected play shape");
 			break;
 		case TO_COLOR:
-			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Switch to Color toolbar, creating Design tool bar");
 			pOut->CreateColorsToolBar();
 			break;
 		case SELECT_BLACK:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color black");
 			pOut->CreateDrawToolBar();
 			pOut->colornum = 1;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_BLUE:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color blue");
 			pOut->CreateDrawToolBar();
 			pOut->colornum = 2;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_GREEN:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color green");
 			pOut->CreateDrawToolBar();
 			pOut->colornum = 3;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_ORANGE:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color orange");
 			pOut->CreateDrawToolBar();
 			pOut->colornum = 4;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_RED:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color red");
 			pOut->CreateDrawToolBar();
 			pOut->colornum = 5;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_YELLOW:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color yellow");
 			pOut->CreateDrawToolBar();
 			pOut->colornum = 6;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case TO_FILL:
-			pOut->ClearToolBar();
 			pOut->PrintMessage("Action: Switch to Fill toolbar, creating Design tool bar");
 			pOut->CreateFillColorsToolBar();
 			break;
 		case SELECT_NO_FILL:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected no fill");
 			pOut->CreateDrawToolBar();
 			pOut->fillcolornum = 0;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_BLACK_FILL:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color black for fill");
 			pOut->CreateDrawToolBar();
 			pOut->fillcolornum = 1;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_BLUE_FILL:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color blue for fill");
 			pOut->CreateDrawToolBar();
 			pOut->fillcolornum = 2;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_GREEN_FILL:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color green for fill");
 			pOut->CreateDrawToolBar();
 			pOut->fillcolornum = 3;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_ORANGE_FILL:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color orange for fill");
 			pOut->CreateDrawToolBar();
 			pOut->fillcolornum = 4;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_RED_FILL:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color red for fill");
 			pOut->CreateDrawToolBar();
 			pOut->fillcolornum = 5;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_YELLOW_FILL:
-			pOut->ClearToolBar();
+			pOut->ClearDrawArea();
 			pOut->PrintMessage("You have selected the color yellow for fill");
 			pOut->CreateDrawToolBar();
 			pOut->fillcolornum = 6;

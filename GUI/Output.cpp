@@ -15,7 +15,7 @@ Output::Output():lengthHex(100),lengthSq(200)  // Initialize length of hexagon a
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 80;
+	UI.MenuItemWidth = 50;
 	UI.DrawColor = BLUE;					//Drawing color
 	UI.FillColor = GREEN;					//Filling color
 	UI.MsgColor = CORNFLOWERBLUE;			//Messages color
@@ -86,7 +86,6 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_SHAPES] = "images\\MenuItems\\shapes.jpg";
 	MenuItemImages[ITM_COLOR] = "images\\MenuItems\\Color_Wheel.jpg";
 	MenuItemImages[ITM_FILL] = "images\\MenuItems\\Color_Fill.jpg";
-	MenuItemImages[ITM_PLYMOD] = "images\\MenuItems\\Play_Mode.jpg";
 	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\undo.jpg";
 	MenuItemImages[ITM_REDO] = "images\\MenuItems\\redo.jpg";
 	MenuItemImages[ITM_DLET] = "images\\MenuItems\\delete.jpg";
@@ -96,6 +95,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_PLY] = "images\\MenuItems\\play.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\download.jpg";
+	MenuItemImages[ITM_PLYMOD] = "images\\MenuItems\\Play_Mode.jpg";
 	MenuItemImages[ITM_EXIT_DRAWMODE] = "images\\MenuItems\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu item and add it to the list
@@ -103,30 +103,28 @@ void Output::CreateDrawToolBar() const
 	//Draw menu item one image at a time
 	for(int i=0; i<DRAW_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
-
-	
-	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
-	
 	CreateShapesToolBarTAB();		// Displays the selected shape on the toolbar
 	CreateColorsToolBarTAB();		// Displays the selected color on the toolbar
 	CreateFillColorsToolBarTAB();   // Displays the selected filling color on the toolbar
+	
+	//Draw a line under the toolbar
+	pWind->SetPen(BLACK, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
+	
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::CreatePlayToolBar() const
 {	
-	ClearToolBar();
 	UI.InterfaceMode = MODE_PLAY;
 
 	
 	///TODO: write code to create Play mode menu
 	string MenuItemImages[PLAY_ITM_COUNT];
-	MenuItemImages[ITM_TYP_COLOR] ="images\\MenuItems\\Color_Wheel.jpg";
-	MenuItemImages[ITM_TYP_SHAPE] ="images\\MenuItems\\shapes.jpg";
-	MenuItemImages[ITM_TYP_BOTH] = "images\\MenuItems\\both.jpg";
-	MenuItemImages[ITM_SWITCH]= "images\\MenuItems\\switch.jpg";
+	MenuItemImages[ITM_TYP_COLOR] ="images\\MenuItems\\Play_Colors.jpg";
+	MenuItemImages[ITM_TYP_SHAPE] ="images\\MenuItems\\Play_Shapes.jpg";
+	MenuItemImages[ITM_TYP_BOTH] = "images\\MenuItems\\Play_Both.jpg";
+	MenuItemImages[ITM_SWITCH]= "images\\MenuItems\\Draw_Mode.jpg";
 	MenuItemImages[ITM_EXIT_PLAYMODE] = "images\\MenuItems\\Menu_Exit.jpg";
 	
 
@@ -135,13 +133,12 @@ void Output::CreatePlayToolBar() const
 	
 	
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateShapesToolBar() const
 {
-	ClearToolBar();
 	UI.InterfaceMode = SHAPES_SELECTION;
 
 	string MenuItemImages[SHAPES_ITM_COUNT];
@@ -153,15 +150,14 @@ void Output::CreateShapesToolBar() const
 
 
 	for (int i = 1; i < SHAPES_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], (i-1) * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], (i - 1) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
 
 
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 void Output::CreateColorsToolBar() const
 {
-	ClearToolBar();
 	UI.InterfaceMode = COLOR_SELECTION;
 
 	string MenuItemImages[COLOR_ITM_COUNT];
@@ -174,14 +170,13 @@ void Output::CreateColorsToolBar() const
 
 
 	for (int i = 1; i < COLOR_ITM_COUNT ; i++)
-		pWind->DrawImage(MenuItemImages[i], (i-1) * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], (i - 1) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
 
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 void Output::CreateFillColorsToolBar() const
 {
-	ClearToolBar();
 	UI.InterfaceMode = FILL_COLOR_SELECTION;
 
 	string MenuItemImages[FILL_COLOR_ITM_COUNT];
@@ -194,9 +189,9 @@ void Output::CreateFillColorsToolBar() const
 	MenuItemImages[ITM_NO_FILL] = "images\\ColorItems\\No_Fill.jpg";
 
 	for (int i = 0; i < FILL_COLOR_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], i* UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
 
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 void Output::CreateShapesToolBarTAB() const
@@ -214,7 +209,7 @@ void Output::CreateShapesToolBarTAB() const
 
 	pWind->DrawImage(MenuItemImages[shapenum], 1 * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 void Output::CreateColorsToolBarTAB() const
@@ -233,7 +228,7 @@ void Output::CreateColorsToolBarTAB() const
 
 		pWind->DrawImage(MenuItemImages[colornum], 2 * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
-	pWind->SetPen(RED, 3);
+		pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 void Output::CreateFillColorsToolBarTAB() const
@@ -251,7 +246,7 @@ void Output::CreateFillColorsToolBarTAB() const
 
 	pWind->DrawImage(MenuItemImages[fillcolornum], 3 * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 void Output::ClearDrawArea() const

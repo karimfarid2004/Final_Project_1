@@ -194,7 +194,7 @@ ActionType Input::GetUserAction() const
 	}
 	else if (UI.InterfaceMode == COLOR_SELECTION) //GUI is in Color Selection
 	{
-		if (y >= 0 && y < UI.ToolBarHeight)
+		if (y >= UI.ToolBarHeight && y < 2 * UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = (x / UI.MenuItemWidth) + 1;
 
@@ -220,7 +220,7 @@ ActionType Input::GetUserAction() const
 	}
 	else if (UI.InterfaceMode == FILL_COLOR_SELECTION) //GUI is in Fill Color Selection
 	{
-		if (y >= 0 && y < UI.ToolBarHeight)
+		if (y >= UI.ToolBarHeight && y < 2 * UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = (x / UI.MenuItemWidth) ;
 
@@ -249,7 +249,7 @@ ActionType Input::GetUserAction() const
 	}
 	else if (UI.InterfaceMode == SHAPES_SELECTION) //GUI is in Shapes Selection
 	{
-		if (y >= 0 && y < UI.ToolBarHeight)
+		if (y >= UI.ToolBarHeight && y < 2 * UI.ToolBarHeight)
 		{
 			int ClickedItemOrder = (x / UI.MenuItemWidth) + 1;
 

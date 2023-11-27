@@ -24,7 +24,6 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_SHAPES,
 	ITM_COLOR,
 	ITM_FILL,
-	ITM_PLYMOD,
 	ITM_UNDO,
 	ITM_REDO,
 	ITM_DLET,
@@ -34,6 +33,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_PLY,
 	ITM_SAVE,
 	ITM_LOAD,
+	ITM_PLYMOD,
 	ITM_EXIT_DRAWMODE,
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
