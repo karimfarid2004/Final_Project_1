@@ -39,7 +39,7 @@ int main()
 	/// =============================2.1- Rectangle Test============================== ///
 	/// ============================================================================== ///
  
-	/*pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue"); // print a message in status bar
+	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue"); // print a message in status bar
 	pIn->GetPointClicked(x, y);                       //Wait for any click to start Rectangle test
 	 
 	// 2.1.1 - Drawing non-filled rectangle
@@ -304,7 +304,7 @@ int main()
 	pOut->PrintMessage("You Entered " + message);
 	pIn->GetPointClicked(x, y);
 
-	*/
+	
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
 	//			Input Class : Check for the user action
