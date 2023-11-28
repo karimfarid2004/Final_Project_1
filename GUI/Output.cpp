@@ -1,5 +1,5 @@
 #include "Output.h"
-#include <cmath>
+
 #define PI 3.14159
 
 Output::Output():lengthHex(100),lengthSq(200)  // Initialize length of hexagon and square
@@ -150,7 +150,7 @@ void Output::CreateShapesToolBar() const
 
 
 	for (int i = 1; i < SHAPES_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], (i - 1) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], (i) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
 
 
 	pWind->SetPen(BLACK, 3);
@@ -168,9 +168,9 @@ void Output::CreateColorsToolBar() const
 	MenuItemImages[ITM_GREEN] = "images\\ColorItems\\Green.jpg";
 	MenuItemImages[ITM_BLUE] = "images\\ColorItems\\Blue.jpg";
 
-
+	
 	for (int i = 1; i < COLOR_ITM_COUNT ; i++)
-		pWind->DrawImage(MenuItemImages[i], (i - 1) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], (i +1) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
 
 	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
@@ -189,7 +189,7 @@ void Output::CreateFillColorsToolBar() const
 	MenuItemImages[ITM_NO_FILL] = "images\\ColorItems\\No_Fill.jpg";
 
 	for (int i = 0; i < FILL_COLOR_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], (i+3) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, UI.ToolBarHeight);
 
 	pWind->SetPen(BLACK, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
@@ -206,7 +206,7 @@ void Output::CreateShapesToolBarTAB() const
 	MenuItemImages[ITM_HEX] = "images\\ShapesItems\\Menu_Hex.jpg";
 	MenuItemImages[ITM_SQU] = "images\\ShapesItems\\Menu_Squ.jpg";
 
-
+	
 	pWind->DrawImage(MenuItemImages[shapenum], 1 * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
 	pWind->SetPen(BLACK, 3);
@@ -261,6 +261,13 @@ void Output::ClearToolBar() const
 	pWind->SetPen(WHITE, 1);
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+}
+void Output::ClearPopUp() const
+{
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(50, UI.ToolBarHeight, 500, 2 * UI.ToolBarHeight);
+
 }
 void Output::PrintMessage(string msg) const	//Prints a message on status bar
 {
@@ -424,11 +431,14 @@ void Output::DrawCir(Point Ctr, Point P2, GfxInfo CirGfxInfo, bool selected) con
 	else
 		style = FRAME;                         
 	int Radius = sqrt(pow((P2.x - Ctr.x), 2) + pow((P2.y - Ctr.y), 2));   // Calculate the radius of the Circle
-	pWind->DrawCircle(Ctr.x, Ctr.y, 1, style);							  // Determinate the center point on window
-
+	
 	pWind->DrawCircle(Ctr.x, Ctr.y, Radius, style);   /*Call the built in function DrawCircle in CMUgraphicsLib to draw the Circle
 														  by sending (X coordinate of center point ,Y coordinate of center point,Radius of the Circle,The style of drawing(Filled or Framed))*/
 
+}
+void Output::DrawPoint(const int x, const int y) const
+{
+	pWind->DrawPixel(x, y);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()

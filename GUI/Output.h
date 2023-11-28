@@ -30,7 +30,8 @@ public:
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;		//Clears the drawing area
 	void ClearToolBar() const;		//Clears current toolbar
-	
+	void ClearPopUp() const;
+
 	// create getters for the length "hexagon and square"
 	int GetLengthSq() const;
 	int GetLengthHex() const;
@@ -47,7 +48,8 @@ public:
 	void DrawHex(Point P1, GfxInfo HexGfxInfo, bool selected = false) const; //Draw a hexagon
 
 	void DrawCir(Point P1, Point P2, GfxInfo CirGfxInfo, bool selected = false) const; //Draw a circle
-
+	
+	void DrawPoint(const int x, const int y) const; //Draw a point
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 

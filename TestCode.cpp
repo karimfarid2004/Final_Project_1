@@ -33,7 +33,7 @@ int main()
 	pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
+	GfxInfo gfxInfo;	//to be used with draw function of the class Ouput
 	Point P1, P2, P3;
 
 	/// =============================2.1- Rectangle Test============================== ///
@@ -46,9 +46,10 @@ int main()
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
 	pIn->CheckPointClicked(ITM_RECT, pOut, P1);       // Check the first point if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not 
-	pOut->PrintMessage("Click the second point");
+	pOut->DrawPoint(P1.x, P1.y);					  // Show the vertices of the figure 
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_RECT, pOut, P2);       // Check the second point if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not 
+	pOut->DrawPoint(P2.x, P2.y);				
 
 	gfxInfo.BorderWdth = 5;                           //Set the width of Figure (Rectangle) borders
 	gfxInfo.DrawClr = BLACK;	                      //Select the color of the Figure (Rectangle) borders
@@ -66,12 +67,12 @@ int main()
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->CheckPointClicked(ITM_RECT, pOut, P1);
-	pOut->PrintMessage("Click the second point");
+	pOut->DrawPoint(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
 	pIn->CheckPointClicked(ITM_RECT, pOut, P2);
-
-	gfxInfo.BorderWdth = 6;			                  // Set the width of Figure (Rectangle) borders
-	gfxInfo.DrawClr = BLUE;			                  //Select the color of the Figure (Rectangle) borders
+	pOut->DrawPoint(P2.x, P2.y);
+	gfxInfo.BorderWdth = 6;			                  
+	gfxInfo.DrawClr = BLUE;			                  
 	gfxInfo.FillClr = GREEN;		                  //Select the fill color of the Figure (Rectangle)
 	gfxInfo.isFilled = true;		                  //Figure (Rectangle) is filled
 	pOut->DrawRect(P1, P2, gfxInfo, false);           // now the fourth parameter is false because it's not Highlighted
@@ -79,7 +80,7 @@ int main()
 	// 2.1.4 - Drawing a highlighted filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);					      // Wait for any click from the user to Highlight the filled Rectangle
-	pOut->DrawRect(P1, P2, gfxInfo, true);		      // now the fourth parameter is true because it's Highlighted
+	pOut->DrawRect(P1, P2, gfxInfo, true);		     
 
 	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish the Rectangle test
@@ -95,6 +96,8 @@ int main()
 	pOut->PrintMessage("Drawing a Square ==> non-filled,  Click one point");
 	pIn->GetPointClicked(P1.x,P1.y);                  // Take the point (Centre) from the user
 	pIn->CheckPointClicked(ITM_SQU, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
+	pOut->DrawPoint(P1.x, P1.y);					  // Show the Centre of the square
+
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;
 	gfxInfo.isFilled = false;
@@ -109,8 +112,9 @@ int main()
 
 	// 2.2.3 - Drawing a filled square
 	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");
-	pIn->GetPointClicked(P1.x, P1.y);                 // Take the point (Centre) from the user
-	pIn->CheckPointClicked(ITM_SQU, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
+	pIn->GetPointClicked(P1.x, P1.y);                 
+	pIn->CheckPointClicked(ITM_SQU, pOut, P1);        				  
+
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;
 	gfxInfo.FillClr = GREEN;
@@ -137,13 +141,14 @@ int main()
 	// 2.3.1 - Drawing non-filled triangle
 	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click three points");    
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);        // Check the fisrt point if it's Valid (Inside the Drawing Area) or Not
-	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click second point");
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);        // Check the first point if it's Valid (Inside the Drawing Area) or Not
+	pOut->DrawPoint(P1.x, P1.y);					  	
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P2);        // Check the second point if it's Valid (Inside the Drawing Area) or Not
-	pOut->PrintMessage("Drawing a Triangle ==> non-filled,  Click third point");
+	pOut->DrawPoint(P2.x, P2.y);
 	pIn->GetPointClicked(P3.x, P3.y);                 // Take the third point from the user
 	pIn->CheckPointClicked(ITM_TRI, pOut, P3);        // Check the third point if it's Valid (Inside the Drawing Area) or Not
+	pOut->DrawPoint(P3.x, P3.y);
 
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;
@@ -161,14 +166,15 @@ int main()
 	// 2.3.3 - Drawing a filled triangle
 
 	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click three points");    
-	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point from the user
-	pIn->CheckPointClicked(ITM_TRI, pOut, P1);        // Check the fisrt point if it's Valid (Inside the Drawing Area) or Not
-	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click second point");
-	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
-	pIn->CheckPointClicked(ITM_TRI, pOut, P2);        // Check the second point if it's Valid (Inside the Drawing Area) or Not
-	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click third point");
-	pIn->GetPointClicked(P3.x, P3.y);                 // Take the third point from the user
-	pIn->CheckPointClicked(ITM_TRI, pOut, P3);        // Check the third point if it's Valid (Inside the Drawing Area) or Not
+	pIn->GetPointClicked(P1.x, P1.y);                
+	pIn->CheckPointClicked(ITM_TRI, pOut, P1);       
+	pOut->DrawPoint(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);                 
+	pIn->CheckPointClicked(ITM_TRI, pOut, P2);        
+	pOut->DrawPoint(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);                 
+	pIn->CheckPointClicked(ITM_TRI, pOut, P3);        
+	pOut->DrawPoint(P3.x, P3.y);
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;
@@ -185,7 +191,7 @@ int main()
 
 
 	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish Triangle test
+	pIn->GetPointClicked(x, y);	                      // Wait for any click to finish Triangle test
 	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test
 
 	/// =============================2.4- Hexagon Test============================== ///
@@ -198,6 +204,7 @@ int main()
 	pOut->PrintMessage("Drawing a Hexagon ==> non-filled,  Click one point");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the point (Centre) from the user
 	pIn->CheckPointClicked(ITM_HEX, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
+	pOut->DrawPoint(P1.x, P1.y);					  // Show the Centre of the Hexagon
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;
 	gfxInfo.isFilled = false;
@@ -213,8 +220,8 @@ int main()
 
 	// 2.4.3 - Drawing a filled hexagon
 	pOut->PrintMessage("Drawing a Hexagon ==> filled,  Click one point");
-	pIn->GetPointClicked(P1.x, P1.y);                 // Take the point (Centre) from the user
-	pIn->CheckPointClicked(ITM_HEX, pOut, P1);        // Check the point (Centre) if it's Valid (Inside the Drawing Area and not to draw on the tool bar) or Not
+	pIn->GetPointClicked(P1.x, P1.y);                
+	pIn->CheckPointClicked(ITM_HEX, pOut, P1);       
 
 	gfxInfo.BorderWdth = 6;
 	gfxInfo.DrawClr = BLUE;
@@ -226,15 +233,14 @@ int main()
 	// 2.4.4 - Drawing a highlighted filled hexagon
 	pOut->PrintMessage("Drawing a Hexagon ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);                       // Wait for any click from the user to Highlight the filled Hexagon
-	pOut->DrawHex(P1, gfxInfo, true);                 // now the third parameter is true because it's Highlighted
-
+	pOut->DrawHex(P1, gfxInfo, true);                 
 
 
 	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	                      //Wait for any click to finish Hexagon test
 	pOut->ClearDrawArea();                            // Clear the drawing area to draw the next test
 
-	/// =============================2.5- Circle Test=============================== ///
+	///// =============================2.5- Circle Test=============================== ///
 	/// ============================================================================ ///
 
 	pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
@@ -243,8 +249,8 @@ int main()
 	// 2.5.1 - Drawing non-filled circle
 	pOut->PrintMessage("Drawing a Circle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point (Centre) from the user
-	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P1);  // check the centre point (not to draw on the tool bar)
-	pOut->DrawCir(P1, P1, gfxInfo, false);		      // To draw the center point to be able to determinate the radius much easier
+	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P1);  // check the Centre point (not to draw on the tool bar)
+	pOut->DrawPoint(P1.x, P1.y);				      // To draw the Centre point to be able to determinate the radius much easier
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_CIRC,pOut ,P1, &P2);   // Check the points if they are Valid ( not to draw on the tool bar) or Not
 	gfxInfo.BorderWdth = 5;
@@ -263,8 +269,8 @@ int main()
 	// 2.5.3 - Drawing a filled circle
 	pOut->PrintMessage("Drawing a Circle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);                 // Take the first point (Centre) from the user
-	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P1);  // check the centre point (not to draw on the tool bar)
-	pOut->DrawCir(P1, P1, gfxInfo, false);	          // To draw the center point to be able to determinate the radius much easier
+	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P1);  // check the Centre point (not to draw on the tool bar)
+	pOut->DrawPoint(P1.x, P1.y);				      // To draw the Centre point to be able to determinate the radius much easier
 	pIn->GetPointClicked(P2.x, P2.y);                 // Take the second point from the user
 	pIn->CheckPointClicked(ITM_CIRC, pOut, P1, &P2);  // Check the points if they are Valid ( not to draw on the tool bar) or Not
 
@@ -318,9 +324,6 @@ int main()
 	ActionType ActType;
 
 
-	///TODO:
-	//You must add a case for each action (both Draw mode and Play mode actions)
-	//Add cases for the missing actions below
 	do
 	{
 		ActType = pIn->GetUserAction();
@@ -335,48 +338,46 @@ int main()
 			pOut->CreateShapesToolBar();
 			break;
 		case DRAW_RECT:
-			pOut->ClearDrawArea();
-			pOut->ClearToolBar();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
-			pOut->CreateDrawToolBar();
+			pOut->CreateShapesToolBarTAB();
 			pOut->shapenum = 1;
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_CIRCLE:
-			pOut->ClearDrawArea();
-			pOut->ClearToolBar();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
-			pOut->CreateDrawToolBar();
+			pOut->CreateShapesToolBarTAB();
 			pOut->shapenum = 2;
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_TRIANGLE:
-			pOut->ClearDrawArea();
-			pOut->ClearToolBar();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("Action: Draw a Triangle , Click anywhere");
-			pOut->CreateDrawToolBar();
+			pOut->CreateShapesToolBarTAB();
 			pOut->shapenum = 3;
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_HEXAGON:
-			pOut->ClearDrawArea();
-			pOut->ClearToolBar();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("Action: Draw a Hexagon , Click anywhere");
-			pOut->CreateDrawToolBar();
+			pOut->CreateShapesToolBarTAB();
 			pOut->shapenum = 4;
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case DRAW_SQUARE:
-			pOut->ClearDrawArea();
-			pOut->ClearToolBar();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("Action: Draw a Square , Click anywhere");
-			pOut->CreateDrawToolBar();
+			pOut->CreateShapesToolBarTAB();
 			pOut->shapenum =5;
 			pOut->CreateShapesToolBarTAB();
 			break;
 		case STATUS:
 			pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
-			break;
+			break; 
+		case TOOLBAR:
+				pOut->PrintMessage("Action: a click on the ToolBar, Click anywhere");
+				break;
 
 		case DRAWING_AREA:
 			pOut->PrintMessage("Action: a click on the Drawing Area, Click anywhere");
@@ -384,6 +385,7 @@ int main()
 
 		case EMPTY:
 			pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
+			
 			break;
 
 		case TO_DRAW:
@@ -411,44 +413,44 @@ int main()
 			pOut->CreateColorsToolBar();
 			break;
 		case SELECT_BLACK:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color black");
-			pOut->CreateDrawToolBar();
+			pOut->CreateColorsToolBarTAB();
 			pOut->colornum = 1;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_BLUE:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color blue");
-			pOut->CreateDrawToolBar();
+			pOut->CreateColorsToolBarTAB();
 			pOut->colornum = 2;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_GREEN:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color green");
-			pOut->CreateDrawToolBar();
+			pOut->CreateColorsToolBarTAB();
 			pOut->colornum = 3;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_ORANGE:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color orange");
-			pOut->CreateDrawToolBar();
+			pOut->CreateColorsToolBarTAB();
 			pOut->colornum = 4;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_RED:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color red");
-			pOut->CreateDrawToolBar();
+			pOut->CreateColorsToolBarTAB();
 			pOut->colornum = 5;
 			pOut->CreateColorsToolBarTAB();
 			break;
 		case SELECT_YELLOW:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color yellow");
-			pOut->CreateDrawToolBar();
+			pOut->CreateColorsToolBarTAB();
 			pOut->colornum = 6;
 			pOut->CreateColorsToolBarTAB();
 			break;
@@ -457,51 +459,51 @@ int main()
 			pOut->CreateFillColorsToolBar();
 			break;
 		case SELECT_NO_FILL:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected no fill");
-			pOut->CreateDrawToolBar();
+			pOut->CreateFillColorsToolBarTAB();
 			pOut->fillcolornum = 0;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_BLACK_FILL:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color black for fill");
-			pOut->CreateDrawToolBar();
+			pOut->CreateFillColorsToolBarTAB();
 			pOut->fillcolornum = 1;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_BLUE_FILL:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color blue for fill");
-			pOut->CreateDrawToolBar();
+			pOut->CreateFillColorsToolBarTAB();
 			pOut->fillcolornum = 2;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_GREEN_FILL:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color green for fill");
-			pOut->CreateDrawToolBar();
+			pOut->CreateFillColorsToolBarTAB();
 			pOut->fillcolornum = 3;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_ORANGE_FILL:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color orange for fill");
-			pOut->CreateDrawToolBar();
+			pOut->CreateFillColorsToolBarTAB();
 			pOut->fillcolornum = 4;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_RED_FILL:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color red for fill");
-			pOut->CreateDrawToolBar();
+			pOut->CreateFillColorsToolBarTAB();
 			pOut->fillcolornum = 5;
 			pOut->CreateFillColorsToolBarTAB();
 			break;
 		case SELECT_YELLOW_FILL:
-			pOut->ClearDrawArea();
+			pOut->ClearPopUp();
 			pOut->PrintMessage("You have selected the color yellow for fill");
-			pOut->CreateDrawToolBar();
+			pOut->CreateFillColorsToolBarTAB();
 			pOut->fillcolornum = 6;
 			pOut->CreateFillColorsToolBarTAB();
 			break;

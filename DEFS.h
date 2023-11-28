@@ -31,6 +31,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	PLAYSHAPE,			// Select the shape to play with
 	PLAYBOTH,			// Select both colors and shapes to play with
 	EMPTY,				// A click on empty place in the toolbar
+	TOOLBAR,			// A click on the toolbar 
 	DRAWING_AREA,		// A click on the drawing area
 	STATUS,				// A click on the status bar
 	SELECT_BLACK,		

@@ -33,21 +33,20 @@ void Input::CheckPointClicked(int CaseShape, Output* outPtr, Point & P1 ,Point *
 			outPtr->ClearStatusBar();
 			outPtr->PrintMessage("Failed to Draw a Rectangle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
-			outPtr->ClearStatusBar();
 		}
 		break;
 	}
 
 	case ITM_CIRC:		//Circle validity
 	{
-		while (P1.y < UI.ToolBarHeight)
+		while (P1.y < UI.ToolBarHeight) //////check the center 
 		{
 			outPtr->ClearStatusBar();
 			outPtr->PrintMessage("Failed to put the Center of the Circle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
 			outPtr->ClearStatusBar();
 		}
-		while (P1.y - sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)) <UI.ToolBarHeight)
+		while (P1.y - sqrt(pow((P2->x - P1.x), 2) + pow((P2->y - P1.y), 2)) <UI.ToolBarHeight) //////chaeck for raduis 
 		{
 			outPtr->ClearStatusBar();
 			outPtr->PrintMessage("Failed to Draw a Circle, you are trying to draw on the toolbar, Please Click another point.");
@@ -98,6 +97,8 @@ void Input::CheckPointClicked(int CaseShape, Output* outPtr, Point & P1 ,Point *
 
 string Input::GetString(Output *pO) const 
 {
+	
+
 	string Label;
 	char Key;
 	while(1)
@@ -122,6 +123,7 @@ string Input::GetString(Output *pO) const
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const
 {
+	
 	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 
@@ -196,7 +198,7 @@ ActionType Input::GetUserAction() const
 	{
 		if (y >= UI.ToolBarHeight && y < 2 * UI.ToolBarHeight)
 		{
-			int ClickedItemOrder = (x / UI.MenuItemWidth) + 1;
+			int ClickedItemOrder = (x / UI.MenuItemWidth) -1;
 
 			switch (ClickedItemOrder) {
 
@@ -207,13 +209,16 @@ ActionType Input::GetUserAction() const
 			case ITM_RED:return SELECT_RED;
 			case ITM_YELLOW:return SELECT_YELLOW;
 
-			default: return EMPTY;
-
+			
 			}
 		}
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
 			return DRAWING_AREA;
+		}
+		else if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			return TOOLBAR;
 		}
 
 		return STATUS;
@@ -222,19 +227,19 @@ ActionType Input::GetUserAction() const
 	{
 		if (y >= UI.ToolBarHeight && y < 2 * UI.ToolBarHeight)
 		{
-			int ClickedItemOrder = (x / UI.MenuItemWidth) ;
+			int ClickedItemOrder = (x / UI.MenuItemWidth) -3;
 
 
 
 			switch (ClickedItemOrder) {
 
+			case ITM_NO_FILL:return SELECT_NO_FILL;
 			case ITM_BLACK:return SELECT_BLACK_FILL;
 			case ITM_BLUE:return SELECT_BLUE_FILL;
 			case ITM_GREEN:return SELECT_GREEN_FILL;
 			case ITM_ORANGE:return SELECT_ORANGE_FILL;
 			case ITM_RED:return SELECT_RED_FILL;
 			case ITM_YELLOW:return SELECT_YELLOW_FILL;
-			case ITM_NO_FILL:return SELECT_NO_FILL;
 
 			default: return EMPTY;
 			}
@@ -242,6 +247,10 @@ ActionType Input::GetUserAction() const
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
 			return DRAWING_AREA;
+		}
+		else if (y >= 0 && y < UI.ToolBarHeight) 
+		{
+			return TOOLBAR;
 		}
 
 		return STATUS;
@@ -251,7 +260,7 @@ ActionType Input::GetUserAction() const
 	{
 		if (y >= UI.ToolBarHeight && y < 2 * UI.ToolBarHeight)
 		{
-			int ClickedItemOrder = (x / UI.MenuItemWidth) + 1;
+			int ClickedItemOrder = (x / UI.MenuItemWidth) ;
 
 			switch (ClickedItemOrder) {
 			case ITM_RECT:return DRAW_RECT;
@@ -269,7 +278,10 @@ ActionType Input::GetUserAction() const
 		{
 			return DRAWING_AREA;
 		}
-
+		else if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			return TOOLBAR;
+		}
 		return STATUS;
 		
 	}
