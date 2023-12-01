@@ -331,7 +331,7 @@ int main()
 		switch (ActType)
 		{
 		case SELECT:
-			pOut->PrintMessage("You have selected the select");
+			pOut->PrintMessage("You have selected the Select Option");
 			break;
 		case TO_ShapesToolBar:
 			pOut->PrintMessage("Action: Switch to shapes tool bar, creating Design tool bar");
@@ -400,13 +400,13 @@ int main()
 			pOut->CreatePlayToolBar();
 			break;
 		case PLAYBOTH:
-			pOut->PrintMessage("You have selected play color and shape");
+			pOut->PrintMessage("Action: Play Color-Shape Game");
 			break;
 		case PLAYCOLOR:
-			pOut->PrintMessage("You have selected play color ");
+			pOut->PrintMessage("Action: Play-Color Game ");
 			break;
 		case PLAYSHAPE:
-			pOut->PrintMessage("You have selected play shape");
+			pOut->PrintMessage("Action: Play-Shape Game");
 			break;
 		case TO_COLOR:
 			pOut->PrintMessage("Action: Switch to Color toolbar, creating Design tool bar");

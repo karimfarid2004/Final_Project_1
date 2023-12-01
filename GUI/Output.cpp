@@ -254,6 +254,9 @@ void Output::ClearDrawArea() const
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
+	pWind->SetPen(BLACK, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearToolBar() const
@@ -262,14 +265,14 @@ void Output::ClearToolBar() const
 	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 }
-void Output::ClearPopUp() const
+void Output::ClearPopUp() const		//Clears the pop Up after selecting the icon
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(50, UI.ToolBarHeight, 500, 2 * UI.ToolBarHeight);
+	pWind->DrawRectangle(UI.MenuItemWidth, UI.ToolBarHeight, 10*UI.MenuItemWidth, 2 * UI.ToolBarHeight);
 
 }
-void Output::PrintMessage(string msg) const	//Prints a message on status bar
+void Output::PrintMessage(string msg) const		//Prints a message on status bar
 {
 	ClearStatusBar();	//First clear the status bar
 	

@@ -59,12 +59,14 @@ void Input::CheckPointClicked(int CaseShape, Output* outPtr, Point & P1 ,Point *
 	case ITM_TRI:
 	{
 		while (P1.y < UI.ToolBarHeight)		//Triangle Validity
-		{
+		{	
 			outPtr->ClearStatusBar();
 			outPtr->PrintMessage("Failed to Draw a Triangle, you are trying to draw on the toolbar, Please Click another point.");
 			GetPointClicked(P1.x, P1.y);
 			outPtr->ClearStatusBar();
+
 		}
+		outPtr->PrintMessage("Drawing a Triangle, Continue choosing the rest of the points");
 	break;
 	}
 
